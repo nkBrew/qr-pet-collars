@@ -27,7 +27,10 @@ export const ScanQrView = () => {
     const renderCamera = () => {
         return (
             <View style={styles.cameraContainer}>
-                <BarCodeScanner onBarCodeScanned={scanned ? undefined : handleBarCodeScanned} style={styles.camera} />
+                <BarCodeScanner
+                    onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+                    style={styles.camera}
+                />
             </View>
         );
     };
