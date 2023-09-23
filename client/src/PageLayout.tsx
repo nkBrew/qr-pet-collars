@@ -23,7 +23,7 @@ export const PageLayout = (props: Props) => {
     return (
         <Row gutter={[0, 24]}>
             <Col span={24}>
-                <Card>
+                <Card bodyStyle={{ padding: '1.6rem 0' }}>
                     <Menu
                         selectedKeys={[`${selectedPath}`]}
                         mode={'horizontal'}

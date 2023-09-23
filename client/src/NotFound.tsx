@@ -23,7 +23,7 @@ export const NotFound = (props: Props) => {
                 style={{ width: '32rem', height: '32rem', borderRadius: '50%', objectFit: 'cover' }}
                 src={img}
             />
-            <Typography.Title level={3} style={{ textAlign: 'center' }}>
+            <Typography.Title level={3} style={{ textAlign: 'center', maxWidth: '40rem' }}>
                 {description}
             </Typography.Title>
             {
