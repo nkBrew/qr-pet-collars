@@ -3,7 +3,7 @@ import axios from 'axios';
 import { generatePath, useNavigate } from 'react-router';
 import { useQuery } from 'react-query';
 import { map } from 'lodash';
-import { Col, Divider, Row, Spin, Typography } from 'antd';
+import { Alert, Col, Divider, Row, Spin, Typography } from 'antd';
 
 import { ROUTES } from '../routes';
 
@@ -49,6 +49,15 @@ export const ViewCollarsPage = () => {
                                 }
                             >
                                 <Row justify={'center'} gutter={[0, 8]}>
+                                    {
+                                        collar && collar.is_missing &&
+                                        <Col span={24}>
+                                            <Alert
+                                                type={'warning'}
+                                                message={`${collar.pet_name} is currently missing :(`}
+                                            />
+                                        </Col>
+                                    }
                                     <Col span={24} style={{ textAlign: 'center' }}>
                                         <Typography.Title level={3}>
                                             {collar.pet_name}
