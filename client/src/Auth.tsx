@@ -101,60 +101,125 @@ export const Auth = () => {
         navigate(ROUTES.viewCollars);
     }
 
+    const images = [
+        'https://images.dog.ceo/breeds/schnauzer-giant/n02097130_4467.jpg',
+        'https://images.dog.ceo/breeds/retriever-golden/n02099601_2796.jpg',
+        'https://images.dog.ceo/breeds/rottweiler/n02106550_2725.jpg',
+        'https://images.dog.ceo/breeds/terrier-border/n02093754_2457.jpg',
+        'https://images.dog.ceo/breeds/elkhound-norwegian/n02091467_6103.jpg',
+        'https://images.dog.ceo/breeds/bulldog-boston/n02096585_11417.jpg',
+        'https://images.dog.ceo/breeds/frise-bichon/stevebaxter_bichon_frise.jpg',
+        'https://images.dog.ceo/breeds/newfoundland/n02111277_6679.jpg',
+        'https://images.dog.ceo/breeds/terrier-toy/n02087046_5890.jpg',
+        'https://images.dog.ceo/breeds/pointer-german/n02100236_1838.jpg',
+        'https://images.dog.ceo/breeds/buhund-norwegian/hakon1.jpg',
+        'https://images.dog.ceo/breeds/labradoodle/Cali.jpg',
+        'https://images.dog.ceo/breeds/setter-english/n02100735_3194.jpg',
+        'https://images.dog.ceo/breeds/bulldog-french/n02108915_110.jpg',
+        'https://images.dog.ceo/breeds/terrier-welsh/lucy.jpg',
+        'https://images.dog.ceo/breeds/pomeranian/n02112018_12853.jpg',
+        'https://images.dog.ceo/breeds/bulldog-english/jager-1.jpg',
+        'https://images.dog.ceo/breeds/akita/Akita_inu_blanc.jpg',
+        'https://images.dog.ceo/breeds/frise-bichon/3.jpg',
+        'https://images.dog.ceo/breeds/chow/n02112137_11273.jpg',
+        'https://images.dog.ceo/breeds/terrier-toy/n02087046_1666.jpg',
+        'https://images.dog.ceo/breeds/mountain-swiss/n02107574_169.jpg',
+        'https://images.dog.ceo/breeds/frise-bichon/5.jpg',
+        'https://images.dog.ceo/breeds/retriever-golden/dogs.boris.jasper.nixon.jpg',
+        'https://images.dog.ceo/breeds/chihuahua/n02085620_500.jpg',
+        'https://images.dog.ceo/breeds/kuvasz/n02104029_262.jpg',
+        'https://images.dog.ceo/breeds/kuvasz/n02104029_1206.jpg',
+        'https://images.dog.ceo/breeds/puggle/IMG_075018.jpg',
+        'https://images.dog.ceo/breeds/hound-ibizan/n02091244_879.jpg',
+        'https://images.dog.ceo/breeds/setter-irish/n02100877_4371.jpg',
+        'https://images.dog.ceo/breeds/poodle-miniature/n02113712_6173.jpg',
+        'https://images.dog.ceo/breeds/hound-blood/n02088466_6974.jpg',
+        'https://images.dog.ceo/breeds/puggle/IMG_151824.jpg',
+        'https://images.dog.ceo/breeds/cockapoo/Guri6.jpg',
+        'https://images.dog.ceo/breeds/kuvasz/n02104029_1313.jpg',
+        'https://images.dog.ceo/breeds/ovcharka-caucasian/IMG_20190826_112034.jpg',
+        'https://images.dog.ceo/breeds/terrier-yorkshire/n02094433_1219.jpg',
+        'https://images.dog.ceo/breeds/cattledog-australian/IMG_4421.jpg',
+        'https://images.dog.ceo/breeds/havanese/00100trPORTRAIT_00100_BURST20191112123933390_COVER.jpg',
+        'https://images.dog.ceo/breeds/bullterrier-staffordshire/n02093256_3906.jpg',
+        'https://images.dog.ceo/breeds/finnish-lapphund/mochilamvan.jpg',
+        'https://images.dog.ceo/breeds/borzoi/n02090622_5775.jpg',
+        'https://images.dog.ceo/breeds/terrier-toy/n02087046_4129.jpg',
+        'https://images.dog.ceo/breeds/pyrenees/n02111500_395.jpg',
+        'https://images.dog.ceo/breeds/dachshund/Miniature_Daschund.jpg',
+
+    ];
+
 
     if (!isAuthenticated) {
         return (
-            <Row align={'middle'} justify={'center'} style={{ height: '90vh' }}>
-                <Col>
-                        <Card>
-                            <Typography.Title level={2}>who let the dogs out?</Typography.Title>
-                            <br/>
-                            <Row justify='center' gutter={5}>
-                                <Col>
-                                    <Image
-                                        preview={false}
-                                        style={{ width: '16rem', height: '16rem', borderRadius: '13%', objectFit: 'cover' }}
-                                        src={'https://images.dog.ceo/breeds/retriever-chesapeake/n02099849_1408.jpg'}
-                                        //https://images.dog.ceo/breeds/newfoundland/n02111277_6679.jpg
-                                    />
-                                </Col>
-                            </Row>
-                            <br/>
-                            <form onSubmit={login}>
+            <Row style={{height: 'calc(100vh - 16px)', overflow: 'hidden'}}>
+                <Col span={24}>
+                    <Row gutter={[8, 8]} style={{position:'absolute'}}>
+                        {images.map(image => {
+                            return <Col flex={1}>
+                                <Image
+                                    preview={false}
+                                    style={{ width: '12vw', height: '12vw', objectFit: 'cover' }}
+                                    src={image}
+                                />
+                            </Col>
+                        })}
+                    </Row>
+                    
+                    <Row align={'middle'} justify={'center'} style={{ height: '90vh' }}>
+                        <Col>
+                            <Card>
+                                <Typography.Title level={2}>who let the dogs out?</Typography.Title>
+                                <br/>
                                 <Row justify='center' gutter={5}>
                                     <Col>
-                                        <Typography.Text>Username: </Typography.Text>
-                                        <br/>
-                                        <Typography.Text>Password: </Typography.Text>
-                                    </Col>
-                                    <Col>
-                                        <input type="text" className="form-control" id="username" name="username"
-                                            value={username} onChange={(event) => setUsername(event.target.value)}/>
-                                        <br/>
-                                        <input type="password" className="form-control" id="password" name="password"
-                                            value={password} onChange={(event) => setPassword(event.target.value)}/>
-                                    </Col>
-                                </Row>
-                                <Row justify='center'>
-                                    <Col>
-                                        {error &&
-                                            <Typography.Text type={'danger'}>
-                                                {error}
-                                            </Typography.Text>
-                                        }
-                                        {!error &&
-                                            <br/>
-                                        }
+                                        <Image
+                                            preview={false}
+                                            style={{ width: '16rem', height: '16rem', borderRadius: '13%', objectFit: 'cover' }}
+                                            src={'https://images.dog.ceo/breeds/retriever-chesapeake/n02099849_1408.jpg'}
+                                            //https://images.dog.ceo/breeds/newfoundland/n02111277_6679.jpg
+                                        />
                                     </Col>
                                 </Row>
                                 <br/>
-                                <Row justify='center'>
-                                    <Col>
-                                        <Button htmlType="submit">Login</Button>
-                                    </Col>
-                                </Row>
-                            </form>
-                        </Card>
+                                <form onSubmit={login}>
+                                    <Row justify='center' gutter={5}>
+                                        <Col>
+                                            <Typography.Text>Username: </Typography.Text>
+                                            <br/>
+                                            <Typography.Text>Password: </Typography.Text>
+                                        </Col>
+                                        <Col>
+                                            <input type="text" className="form-control" id="username" name="username"
+                                                value={username} onChange={(event) => setUsername(event.target.value)}/>
+                                            <br/>
+                                            <input type="password" className="form-control" id="password" name="password"
+                                                value={password} onChange={(event) => setPassword(event.target.value)}/>
+                                        </Col>
+                                    </Row>
+                                    <Row justify='center'>
+                                        <Col>
+                                            {error &&
+                                                <Typography.Text type={'danger'}>
+                                                    {error}
+                                                </Typography.Text>
+                                            }
+                                            {!error &&
+                                                <br/>
+                                            }
+                                        </Col>
+                                    </Row>
+                                    <br/>
+                                    <Row justify='center'>
+                                        <Col>
+                                            <Button htmlType="submit">Login</Button>
+                                        </Col>
+                                    </Row>
+                                </form>
+                            </Card>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
         );
