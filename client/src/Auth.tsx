@@ -76,7 +76,7 @@ export const Auth = () => {
                 setUsername("");
                 setPassword("");
                 setError("");
-                navigate(ROUTES.createCollar);
+                navigate(ROUTES.viewCollars);
 
             })
             .catch((err) => {
@@ -97,8 +97,8 @@ export const Auth = () => {
             .catch((err) => console.log(err));
     };
 
-    const createCollar = () => {
-        navigate(ROUTES.createCollar);
+    const viewCollars = () => {
+        navigate(ROUTES.viewCollars);
     }
 
 
@@ -107,15 +107,14 @@ export const Auth = () => {
             <Row align={'middle'} justify={'center'} style={{ height: '90vh' }}>
                 <Col>
                         <Card>
-                            <Typography.Title>who let the dogs out?</Typography.Title>
+                            <Typography.Title level={2}>who let the dogs out?</Typography.Title>
                             <br/>
                             <Row justify='center' gutter={5}>
                                 <Col>
                                     <Image
                                         preview={false}
-                                        style={{ width: '16rem', height: '16rem', borderRadius: '20%', objectFit: 'cover' }}
+                                        style={{ width: '16rem', height: '16rem', borderRadius: '13%', objectFit: 'cover' }}
                                         src={'https://images.dog.ceo/breeds/retriever-chesapeake/n02099849_1408.jpg'}
-                                        //https://images.dog.ceo/breeds/retriever-chesapeake/n02099849_1408.jpg
                                         //https://images.dog.ceo/breeds/newfoundland/n02111277_6679.jpg
                                     />
                                 </Col>
@@ -160,37 +159,39 @@ export const Auth = () => {
             </Row>
         );
     }
-    return (
-        <Row align={'middle'} justify={'center'} style={{ height: '90vh' }}>
-            <Col>
-                <Card>
-                    <Row justify='center' gutter={5}>
-                        <Col>
-                            <Image
-                                preview={false}
-                                style={{ width: '16rem', height: '16rem', borderRadius: '50%', objectFit: 'cover' }}
-                                src={'https://images.dog.ceo/breeds/greyhound-italian/n02091032_658.jpg'}
-                                //https://images.dog.ceo/breeds/retriever-chesapeake/n02099849_1408.jpg
+    else if (isAuthenticated) {
+        return (
+            <Row align={'middle'} justify={'center'} style={{ height: '90vh' }}>
+                <Col>
+                    <Card>
+                        <Row justify='center' gutter={5}>
+                            <Col>
+                                <Image
+                                    preview={false}
+                                    style={{ width: '16rem', height: '16rem', borderRadius: '50%', objectFit: 'cover' }}
+                                    src={'https://images.dog.ceo/breeds/greyhound-italian/n02091032_658.jpg'}
+                                    //https://images.dog.ceo/breeds/retriever-chesapeake/n02099849_1408.jpg
 
-                            />
-                        </Col>
-                    </Row>
-                    <br/>
-                    <Typography.Text>are you sure you want to log out?</Typography.Text>
-                    <br/>
-                    <br/>
-                    <Row justify='center' gutter={20}>
-                        <Col>
-                            <Button type='primary' onClick={logout}>Yes</Button>
-                        </Col>
-                        <Col>
-                            <Button onClick={createCollar}>No</Button>
-                        </Col>
-                    </Row>
-                </Card>
-            </Col>
-        </Row>
-    )
+                                />
+                            </Col>
+                        </Row>
+                        <br/>
+                        <Typography.Text>are you sure you want to log out?</Typography.Text>
+                        <br/>
+                        <br/>
+                        <Row justify='center' gutter={20}>
+                            <Col>
+                                <Button type='primary' onClick={logout}>Yes</Button>
+                            </Col>
+                            <Col>
+                                <Button onClick={viewCollars}>No</Button>
+                            </Col>
+                        </Row>
+                    </Card>
+                </Col>
+            </Row>
+        )
+    }
 }
 
 export default Auth;
