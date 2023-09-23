@@ -39,7 +39,7 @@ export const CollarForm = (props: Props) => {
         <Form
             form={form}
             layout={'horizontal'}
-            labelCol={{ span: 6 }}
+            labelCol={{ span: 7 }}
             onFinish={onFinish}
             initialValues={initialValues}
         >
@@ -65,7 +65,7 @@ export const CollarForm = (props: Props) => {
                 <Input />
             </Form.Item>
             <Form.Item
-              label="Weight"
+              label="Weight (kg)"
               name="weight"
               rules={[{ required: true, message: 'its ok we do not judge here' }]}
             >

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col, Image, Row } from 'antd';
+import { Card, Col, Row } from 'antd';
 
 import type { ReactNode } from 'react';
 import { DogImage } from './DogImage';
