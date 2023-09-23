@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, InputItem } from '@ant-design/react-native';
+import { Button, Checkbox, InputItem } from '@ant-design/react-native';
 import { theme } from './theme';
 import { Text, View } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
@@ -22,6 +22,7 @@ export const CollarForm = ({ qrCodeId, refetch, collarData }) => {
             owner_name: collarData ? collarData.owner_name : '',
             owner_email: collarData ? collarData.owner_email : '',
             phone_number: collarData ? collarData.phone_number : '',
+            is_missing: collarData ? collarData.is_missing : false,
         },
     });
     const onSubmit = (data) => {
@@ -224,6 +225,20 @@ export const CollarForm = ({ qrCodeId, refetch, collarData }) => {
                     This is required.
                 </Text>
             )}
+            {collarData &&
+                <Controller
+                    control={control}
+                    render={({ field: { onChange, value, setValue } }) => (
+                        <Checkbox
+                            onChange={(e) => onChange(e.target.checked)}
+                            checked={value}
+                        >
+                            <Text style={theme.label}>they're missing! D:</Text>
+                        </Checkbox>
+                    )}
+                    name='is_missing'
+                />
+            }
             <Button
                 style={{ marginTop: 24, marginHorizontal: 12 }}
                 type={'primary'}

@@ -51,50 +51,54 @@ export const FindCollarPage = () => {
                     {
                         collar || isLoadingCollar
                             ? <Col span={24}>
-                                <CollarCard
-                                    img={collar && collar.img_url ? collar.img_url : null}
-                                    isLoading={isLoadingCollar}
-                                >
-                                    {
-                                        collar
-                                            ? <Row justify={'center'} gutter={[0, 8]}>
-                                                <Col span={24} style={{ textAlign: 'center' }}>
-                                                    <Typography.Title level={3}>
-                                                        {collar.pet_name}
-                                                    </Typography.Title>
-                                                </Col>
-                                                <Col span={24} style={{ textAlign: 'center' }}>
-                                                    <Typography.Title level={5}>
-                                                        {collar.breed}
-                                                    </Typography.Title>
-                                                </Col>
-                                                <Col span={24} style={{ textAlign: 'center' }}>
-                                                    <Typography.Text style={{ fontSize: '1.6rem' }}>
-                                                        Weight: {Number(collar.weight)}kg
-                                                    </Typography.Text>
-                                                </Col>
-                                                <Col span={24}>
-                                                    <Divider style={{ margin: 0 }}/>
-                                                </Col>
-                                                <Col span={24} style={{ textAlign: 'center' }}>
-                                                    <Typography.Text style={{ fontSize: '1.6rem' }}>
-                                                        Owner: {collar.owner_name}
-                                                    </Typography.Text>
-                                                </Col>
-                                                <Col span={24} style={{ textAlign: 'center' }}>
-                                                    <Typography.Text style={{ fontSize: '1.6rem' }}>
-                                                        Email: {collar.owner_email}
-                                                    </Typography.Text>
-                                                </Col>
-                                                <Col span={24} style={{ textAlign: 'center' }}>
-                                                    <Typography.Text style={{ fontSize: '1.6rem' }}>
-                                                        Phone: {collar.phone_number}
-                                                    </Typography.Text>
-                                                </Col>
-                                            </Row>
-                                            : <Skeleton/>
-                                    }
-                                </CollarCard>
+                                <Row justify={'center'}>
+                                    <Col flex={'40rem'}>
+                                        <CollarCard
+                                            img={collar && collar.img_url ? collar.img_url : null}
+                                            isLoading={isLoadingCollar}
+                                        >
+                                            {
+                                                collar
+                                                    ? <Row justify={'center'} gutter={[0, 8]}>
+                                                        <Col span={24} style={{ textAlign: 'center' }}>
+                                                            <Typography.Title level={3}>
+                                                                {collar.pet_name}
+                                                            </Typography.Title>
+                                                        </Col>
+                                                        <Col span={24} style={{ textAlign: 'center' }}>
+                                                            <Typography.Title level={5}>
+                                                                {collar.breed}
+                                                            </Typography.Title>
+                                                        </Col>
+                                                        <Col span={24} style={{ textAlign: 'center' }}>
+                                                            <Typography.Text style={{ fontSize: '1.6rem' }}>
+                                                                Weight: {Number(collar.weight)}kg
+                                                            </Typography.Text>
+                                                        </Col>
+                                                        <Col span={24}>
+                                                            <Divider style={{ margin: 0 }}/>
+                                                        </Col>
+                                                        <Col span={24} style={{ textAlign: 'center' }}>
+                                                            <Typography.Text style={{ fontSize: '1.6rem' }}>
+                                                                Owner: {collar.owner_name}
+                                                            </Typography.Text>
+                                                        </Col>
+                                                        <Col span={24} style={{ textAlign: 'center' }}>
+                                                            <Typography.Text style={{ fontSize: '1.6rem' }}>
+                                                                Email: {collar.owner_email}
+                                                            </Typography.Text>
+                                                        </Col>
+                                                        <Col span={24} style={{ textAlign: 'center' }}>
+                                                            <Typography.Text style={{ fontSize: '1.6rem' }}>
+                                                                Phone: {collar.phone_number}
+                                                            </Typography.Text>
+                                                        </Col>
+                                                    </Row>
+                                                    : <Skeleton/>
+                                            }
+                                        </CollarCard>
+                                    </Col>
+                                </Row>
                             </Col>
                             : <Col span={24}>
                                 <Row justify={'center'}>
