@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client'
 import { Route, Routes } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { Typography } from 'antd';
 
 import './index.css';
 
@@ -11,8 +10,9 @@ import { ROUTES } from './routes';
 
 import Auth from './Auth';
 import { PageLayout } from './PageLayout';
-import { UpdateCollarPage } from './collar/UpdateCollarPage';
+import { NotFoundPage } from './NotFoundPage';
 import { ViewCollarPage } from './collar/ViewCollarPage';
+import { UpdateCollarPage } from './collar/UpdateCollarPage';
 import { CreateCollarPage } from './collar/CreateCollarPage';
 
 const queryClient = new QueryClient();
@@ -28,7 +28,7 @@ root.render(
                     <Route path={ROUTES.viewCollar} element={<PageLayout><ViewCollarPage/></PageLayout>}/>
                     <Route path={ROUTES.updateCollar} element={<PageLayout><UpdateCollarPage/></PageLayout>}/>
                     <Route path={ROUTES.createCollar} element={<PageLayout><CreateCollarPage/></PageLayout>}/>
-                    <Route path={'*'} element={<Typography.Text>Page Not Found</Typography.Text>}/>
+                    <Route path={'*'} element={<NotFoundPage/>}/>
                 </Routes>
             </BrowserRouter>
         </QueryClientProvider>
