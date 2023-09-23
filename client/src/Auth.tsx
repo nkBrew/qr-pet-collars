@@ -96,6 +96,10 @@ export const Auth = () => {
             .catch((err) => console.log(err));
     };
 
+    const createCollar = () => {
+
+    }
+
     if (!isAuthenticated) {
         return (
             <Row justify='center'>
@@ -146,9 +150,12 @@ export const Auth = () => {
                 <Card>
                     <Typography.Title>You are logged in!</Typography.Title>
                     <br/>
-                    <Row justify='center'>
+                    <Row justify='center' gutter={10}>
                         <Col>
-                            <Button onClick={logout}>Log out</Button>
+                            <Button onClick={logout}>Log Out</Button>
+                        </Col>
+                        <Col>
+                            <Button onClick={createCollar}>Create Collar</Button>
                         </Col>
                     </Row>
                 </Card>
