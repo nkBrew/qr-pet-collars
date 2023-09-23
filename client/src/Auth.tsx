@@ -25,7 +25,6 @@ export const Auth = () => {
             .then((res) => {
                 const csrfToken = res.headers.get("X-CSRFToken");
                 setCsrf(csrfToken || "");
-                console.log({csrfToken});
             })
             .catch((err) => {
                 console.log({err});
