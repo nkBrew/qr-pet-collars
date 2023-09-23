@@ -11,6 +11,7 @@ import { ROUTES } from './routes';
 import Auth from './Auth';
 import { PageLayout } from './PageLayout';
 import { NotFoundPage } from './NotFoundPage';
+import { RootRedirect } from './RootRedirect';
 import { ViewCollarPage } from './collar/ViewCollarPage';
 import { UpdateCollarPage } from './collar/UpdateCollarPage';
 import { CreateCollarPage } from './collar/CreateCollarPage';
@@ -24,6 +25,7 @@ root.render(
         <QueryClientProvider client={queryClient}>
             <BrowserRouter>
                 <Routes>
+                    <Route path={ROUTES.root} element={<RootRedirect/>}/>
                     <Route path={ROUTES.login} element={<Auth/>}/>
                     <Route path={ROUTES.viewCollar} element={<PageLayout><ViewCollarPage/></PageLayout>}/>
                     <Route path={ROUTES.updateCollar} element={<PageLayout><UpdateCollarPage/></PageLayout>}/>
