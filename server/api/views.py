@@ -74,7 +74,6 @@ class CollarView(APIView):
     def get(self, request, qr_code_id):
         instance = get_object_or_404(Collar, qr_code_id=qr_code_id)
         serializer = CollarSerializer(instance=instance)
-
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
@@ -82,3 +81,10 @@ class CollarView(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(data=serializer.data, status=status.HTTP_201_CREATED)
+
+    def put(self, request, qr_code_id):
+        instance = get_object_or_404(Collar, qr_code_id=qr_code_id)
+        serializer = CollarSerializer(data=request.data, instance=instance)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
