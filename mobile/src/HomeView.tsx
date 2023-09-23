@@ -4,6 +4,9 @@ import { useNavigation } from '@react-navigation/native';
 import { SCAN_QR_VIEW } from './navigation/constants';
 import { theme } from './theme';
 
+/**
+ * TODO: Link to actual Update and Create pages
+ */
 const HomeView = () => {
     const navigation = useNavigation();
     const handleButtonPress = (view) => {
@@ -11,22 +14,20 @@ const HomeView = () => {
 
         navigation.navigate(view);
     };
-
     return (
         <View style={theme.container}>
-            {/* <Text>HomeView</Text> */}
             <View style={styles.buttonContainer}>
                 <Pressable onPress={() => handleButtonPress(SCAN_QR_VIEW)} style={styles.button}>
-                    <Text style={styles.text}>Scan QR Code</Text>
+                    <Text style={styles.text}>Scan QR Collar</Text>
                 </Pressable>
                 <Pressable onPress={() => handleButtonPress(SCAN_QR_VIEW)} style={styles.button}>
                     <Text style={styles.text}>Update</Text>
                 </Pressable>
+                {/* TODO:  */}
                 <Pressable onPress={() => handleButtonPress(SCAN_QR_VIEW)} style={styles.button}>
                     <Text style={styles.text}>Create</Text>
                 </Pressable>
             </View>
-            {/* <Button onPress={() => handleButtonPress(SCAN_QR_VIEW)} /> */}
         </View>
     );
 };
