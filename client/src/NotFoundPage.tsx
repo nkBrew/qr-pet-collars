@@ -16,7 +16,7 @@ export const NotFoundPage = () => {
                     img={'https://images.dog.ceo/breeds/terrier-norfolk/n02094114_1076.jpg'}
                     description={'Oops! Looks like you got lost'}
                     buttonText={'Take me back'}
-                    buttonAction={() => navigate(generatePath(ROUTES.createCollar))}
+                    buttonAction={() => navigate(generatePath(ROUTES.viewCollars))}
                 />
             </Col>
         </Row>

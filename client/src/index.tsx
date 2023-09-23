@@ -12,7 +12,8 @@ import Auth from './Auth';
 import { PageLayout } from './PageLayout';
 import { NotFoundPage } from './NotFoundPage';
 import { RootRedirect } from './RootRedirect';
-import { ViewCollarPage } from './collar/ViewCollarPage';
+import { FindCollarPage } from './collar/FindCollarPage';
+import { ViewCollarsPage } from './collar/ViewCollarsPage';
 import { UpdateCollarPage } from './collar/UpdateCollarPage';
 import { CreateCollarPage } from './collar/CreateCollarPage';
 
@@ -27,7 +28,8 @@ root.render(
                 <Routes>
                     <Route path={ROUTES.root} element={<RootRedirect/>}/>
                     <Route path={ROUTES.login} element={<Auth/>}/>
-                    <Route path={ROUTES.viewCollar} element={<PageLayout><ViewCollarPage/></PageLayout>}/>
+                    <Route path={ROUTES.viewCollars} element={<PageLayout><ViewCollarsPage/></PageLayout>}/>
+                    <Route path={ROUTES.findCollar} element={<PageLayout><FindCollarPage/></PageLayout>}/>
                     <Route path={ROUTES.updateCollar} element={<PageLayout><UpdateCollarPage/></PageLayout>}/>
                     <Route path={ROUTES.createCollar} element={<PageLayout><CreateCollarPage/></PageLayout>}/>
                     <Route path={'*'} element={<NotFoundPage/>}/>

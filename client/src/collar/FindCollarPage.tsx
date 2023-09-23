@@ -13,7 +13,7 @@ import { NotFound } from '../NotFound';
 
 const API_HOST = 'http://localhost:8000';
 
-export const ViewCollarPage = () => {
+export const FindCollarPage = () => {
     const navigate = useNavigate();
     const params = useParams();
 
