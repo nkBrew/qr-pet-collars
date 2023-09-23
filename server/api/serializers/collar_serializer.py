@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from server.api.models import Collar
+from ..models import Collar
 
 
 class CollarSerializer(serializers.ModelSerializer):
