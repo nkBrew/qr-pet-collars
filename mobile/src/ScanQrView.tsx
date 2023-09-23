@@ -8,6 +8,7 @@ import { COLLAR_VIEW } from './navigation/constants';
 
 export const ScanQrView = () => {
     const [hasPermission, setHasPermission] = useState(null);
+    const [scanned, setScanned] = useState(false);
     const navigation = useNavigation();
 
     useEffect(() => {
@@ -18,13 +19,15 @@ export const ScanQrView = () => {
     }, []);
 
     const handleBarCodeScanned = ({ type, data }) => {
-        navigation.navigate(COLLAR_VIEW);
+        const qrCodeId = data.substring(data.lastIndexOf('/') + 1);
+        setScanned(true);
+        navigation.navigate(COLLAR_VIEW, { qrCodeId });
     };
 
     const renderCamera = () => {
         return (
             <View style={styles.cameraContainer}>
-                <BarCodeScanner onBarCodeScanned={handleBarCodeScanned} style={styles.camera} />
+                <BarCodeScanner onBarCodeScanned={scanned ? undefined : handleBarCodeScanned} style={styles.camera} />
             </View>
         );
     };
