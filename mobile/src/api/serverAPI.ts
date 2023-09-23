@@ -14,3 +14,29 @@ export const getCollar = (collarId) => {
         })
         .catch((error) => console.log(error));
 };
+
+export const createCollar = (collar) => {
+    return api
+        .post('/collar/', collar)
+        .then((response) => {
+            alert('Collar created');
+            return response.data;
+        })
+        .catch((error) => {
+            //TODO MAKE TOAST WORK
+            console.log(error);
+        });
+};
+
+export const updateCollar = (qrCodeId, collar) => {
+    return api
+        .put(`/collar/${qrCodeId}/`, collar)
+        .then((response) => {
+            alert('Collar updated');
+            return response.data;
+        })
+        .catch((error) => {
+            //TODO MAKE TOAST WORK
+            console.log(error);
+        });
+};

@@ -81,10 +81,12 @@ export const Auth = () => {
                 setUsername("");
                 setPassword("");
                 setError("");
+                navigate(ROUTES.createCollar);
+
             })
             .catch((err) => {
                 console.log({err});
-                setError("Wrong username or password")
+                setError("wrong username or password")
             });
     }
 
@@ -105,14 +107,16 @@ export const Auth = () => {
         navigate(ROUTES.createCollar);
     }
 
+
     if (!isAuthenticated) {
         return (
             <Row justify='center'>
                 <Col>
                     <Card>
-                        <Typography.Title>Auth</Typography.Title>
+                        <Typography.Title>who let the dogs out?</Typography.Title>
+                        <br/>
                         <form onSubmit={login}>
-                            <Row gutter={3}>
+                            <Row justify='center' gutter={5}>
                                 <Col>
                                     <Typography.Text>Username: </Typography.Text>
                                     <br/>
@@ -126,17 +130,18 @@ export const Auth = () => {
                                         value={password} onChange={(event) => setPassword(event.target.value)}/>
                                 </Col>
                             </Row>
-                            <div className="form-group">
-
-
-                                <div>
+                            <Row justify='center'>
+                                <Col>
                                     {error &&
-                                        <small className="text-danger">
+                                        <Typography.Text type={'danger'}>
                                             {error}
-                                        </small>
+                                        </Typography.Text>
                                     }
-                                </div>
-                            </div>
+                                    {!error &&
+                                        <br/>
+                                    }
+                                </Col>
+                            </Row>
                             <br/>
                             <Row justify='center'>
                                 <Col>
@@ -153,14 +158,15 @@ export const Auth = () => {
         <Row justify='center'>
             <Col>
                 <Card>
-                    <Typography.Title>You are logged in!</Typography.Title>
+                    <Typography.Text>are you sure you want to log out?</Typography.Text>
                     <br/>
-                    <Row justify='center' gutter={10}>
+                    <br/>
+                    <Row justify='center' gutter={20}>
                         <Col>
-                            <Button onClick={logout}>Log Out</Button>
+                            <Button type='primary' onClick={logout}>Yes</Button>
                         </Col>
                         <Col>
-                            <Button onClick={createCollar}>Create Collar</Button>
+                            <Button onClick={createCollar}>No</Button>
                         </Col>
                     </Row>
                 </Card>

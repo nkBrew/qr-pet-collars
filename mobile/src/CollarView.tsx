@@ -1,12 +1,9 @@
 import React from 'react';
 import { Flex, View, WhiteSpace } from '@ant-design/react-native';
 import { theme } from './theme';
-import { RouteProp } from '@react-navigation/native';
-import { Text, StyleSheet, Image } from 'react-native';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { Text, Image } from 'react-native';
+import { useQuery } from '@tanstack/react-query';
 import { dogPhoto } from './api/dogPhoto';
-import { dogData } from './api/dogData';
-import { CreateCollarForm } from './CreateCollarForm';
 import { getCollar } from './api/serverAPI';
 
 export const CollarView = ({ route }) => {
@@ -16,18 +13,14 @@ export const CollarView = ({ route }) => {
         queryFn: dogPhoto,
     });
 
-    const {
-        isLoading,
-        data: collarData,
-        error,
-    } = useQuery({
+    const { data: collarData, isLoading } = useQuery({
         queryKey: ['dogData'],
         queryFn: () => getCollar(qrCodeId || 1),
     });
 
     return (
         <View style={theme.container}>
-            {collarData ? (
+            {collarData && !isLoading ? (
                 <Flex direction={'column'}>
                     <Text style={theme.title}>{route.params.qrCodeId}</Text>
                     <Image
@@ -40,10 +33,10 @@ export const CollarView = ({ route }) => {
                     <Text style={theme.paragraph}>{collarData.weight}</Text>
                     <Text style={theme.paragraph}>Owner: {collarData.owner_name}</Text>
                     <Text style={theme.paragraph}>{collarData.owner_email}</Text>
-                    <Text style={theme.paragraph}>{collarData.owner_address}</Text>
+                    <Text style={theme.paragraph}>{collarData.phone_number}</Text>
                 </Flex>
             ) : (
-                <CreateCollarForm />
+                <Text style={theme.paragraph}>We couldn't find a collar with this qr code</Text>
             )}
         </View>
     );
