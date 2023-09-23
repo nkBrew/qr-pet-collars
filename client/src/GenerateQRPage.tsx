@@ -28,7 +28,7 @@ export const GenerateQRPage = () => {
             <Col flex={'40rem'}>
                 {contextHolder}
                 <Row gutter={[16, 16]}>
-                    <Col span={16}>
+                    <Col flex={1}>
                         <Form
                             form={form}
                             onFinish={generateQRCode}
@@ -46,7 +46,7 @@ export const GenerateQRPage = () => {
                             </Form.Item>
                         </Form>
                     </Col>
-                    <Col span={8}>
+                    <Col flex={0}>
                         <Button type={'primary'} onClick={() => form.submit()}>
                             Generate
                         </Button>
