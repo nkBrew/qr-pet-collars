@@ -9,6 +9,13 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_POST
 import qrcode
 
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from .models import Collar
+from .serializers.collar_serializer import CollarSerializer
+
 
 def make_qr_code(request, pk):
     buffer = io.BytesIO()
@@ -60,3 +67,11 @@ def whoami_view(request):
     if request.user.is_authenticated:
         return JsonResponse({'username': request.user.username})
     return JsonResponse({'isAuthenticated': False})
+
+
+class CollarView(APIView):
+    def post(self, request):
+        serializer = CollarSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        data = serializer.save()
+        return Response(data=data, status=status.HTTP_201_CREATED)
