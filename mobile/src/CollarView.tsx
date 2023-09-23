@@ -6,6 +6,7 @@ import { Text, StyleSheet, Image } from 'react-native';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { dogPhoto } from './api/dogPhoto';
 import { dogData } from './api/dogData';
+import { CreateCollarForm } from './CreateCollarForm';
 
 export const CollarView = ({ route }) => {
     const qrCodeId = route.params && route.params.qrCodeId;
@@ -14,10 +15,11 @@ export const CollarView = ({ route }) => {
         queryFn: dogPhoto,
     });
 
-    const { data: test } = useQuery({
+    const { data: collar } = useQuery({
         queryKey: ['dogData'],
         queryFn: dogData,
     });
+
     const collarData = {
         uuid: '1-2-3-4',
         pet_name: 'Luna',
@@ -30,20 +32,24 @@ export const CollarView = ({ route }) => {
 
     return (
         <View style={theme.container}>
-            <Flex direction={'column'}>
-                <Text style={theme.title}>{route.params.qrCodeId}</Text>
-                <Image
-                    style={{ width: 200, height: 200, borderRadius: 100, marginTop: 48 }}
-                    source={{ uri: profilePic }}
-                />
-                <WhiteSpace />
-                <Text style={theme.title}>{collarData.pet_name}</Text>
-                <Text style={theme.paragraph}>{collarData.breed}</Text>
-                <Text style={theme.paragraph}>{collarData.weight}</Text>
-                <Text style={theme.paragraph}>Owner: {collarData.owner_name}</Text>
-                <Text style={theme.paragraph}>{collarData.owner_email}</Text>
-                <Text style={theme.paragraph}>{collarData.owner_address}</Text>
-            </Flex>
+            {collar ? (
+                <Flex direction={'column'}>
+                    <Text style={theme.title}>{route.params.qrCodeId}</Text>
+                    <Image
+                        style={{ width: 200, height: 200, borderRadius: 100, marginTop: 48 }}
+                        source={{ uri: profilePic }}
+                    />
+                    <WhiteSpace />
+                    <Text style={theme.title}>{collarData.pet_name}</Text>
+                    <Text style={theme.paragraph}>{collarData.breed}</Text>
+                    <Text style={theme.paragraph}>{collarData.weight}</Text>
+                    <Text style={theme.paragraph}>Owner: {collarData.owner_name}</Text>
+                    <Text style={theme.paragraph}>{collarData.owner_email}</Text>
+                    <Text style={theme.paragraph}>{collarData.owner_address}</Text>
+                </Flex>
+            ) : (
+                <CreateCollarForm />
+            )}
         </View>
     );
 };
