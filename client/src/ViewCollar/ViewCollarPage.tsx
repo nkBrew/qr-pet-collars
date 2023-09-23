@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router';
 import { useQuery } from 'react-query';
-import { Card, Col, Image, Row, Typography } from 'antd';
+import { Card, Col, Divider, Image, Row, Typography } from 'antd';
 
 export const ViewCollarPage = () => {
     const params = useParams();
@@ -23,7 +23,6 @@ export const ViewCollarPage = () => {
         refetchOnWindowFocus: false,
         staleTime: 60 * 1000,
     });
-    console.log(collar);
 
     return (
         <Row justify={'center'}>
@@ -38,7 +37,7 @@ export const ViewCollarPage = () => {
                     }
                 >
                     {
-                        !collar && !isLoadingCollar &&
+                        !collar &&
                         <Row justify={'center'}>
                             <Col span={24} style={{ textAlign: 'center' }}>
                                 <Typography.Title level={3}>
@@ -61,22 +60,25 @@ export const ViewCollarPage = () => {
                                 </Typography.Title>
                             </Col>
                             <Col span={24} style={{ textAlign: 'center' }}>
-                                <Typography.Text>
-                                    {collar.weight}kg
+                                <Typography.Text style={{ fontSize: '1.6rem' }}>
+                                    {Number(collar.weight)}kg
                                 </Typography.Text>
                             </Col>
+                            <Col span={24}>
+                                <Divider style={{ margin: 0 }}/>
+                            </Col>
                             <Col span={24} style={{ textAlign: 'center' }}>
-                                <Typography.Text>
+                                <Typography.Text style={{ fontSize: '1.6rem' }}>
                                     {collar.owner_name}
                                 </Typography.Text>
                             </Col>
                             <Col span={24} style={{ textAlign: 'center' }}>
-                                <Typography.Text>
+                                <Typography.Text style={{ fontSize: '1.6rem' }}>
                                     {collar.owner_email}
                                 </Typography.Text>
                             </Col>
                             <Col span={24} style={{ textAlign: 'center' }}>
-                                <Typography.Text>
+                                <Typography.Text style={{ fontSize: '1.6rem' }}>
                                     {collar.phone_number}
                                 </Typography.Text>
                             </Col>
