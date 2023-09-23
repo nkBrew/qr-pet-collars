@@ -7,6 +7,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { dogPhoto } from './api/dogPhoto';
 import { dogData } from './api/dogData';
 import { CreateCollarForm } from './CreateCollarForm';
+import { getCollar } from './api/serverAPI';
 
 export const CollarView = ({ route }) => {
     const qrCodeId = route.params && route.params.qrCodeId;
@@ -15,24 +16,18 @@ export const CollarView = ({ route }) => {
         queryFn: dogPhoto,
     });
 
-    const { data: collar } = useQuery({
+    const {
+        isLoading,
+        data: collarData,
+        error,
+    } = useQuery({
         queryKey: ['dogData'],
-        queryFn: dogData,
+        queryFn: () => getCollar(qrCodeId || 1),
     });
-
-    const collarData = {
-        uuid: '1-2-3-4',
-        pet_name: 'Luna',
-        breed: 'Border Collie',
-        weight: '22kg',
-        owner_name: 'Diego',
-        owner_address: '123 Costa Barros',
-        owner_email: 'diego@gmail.com',
-    };
 
     return (
         <View style={theme.container}>
-            {collar ? (
+            {collarData ? (
                 <Flex direction={'column'}>
                     <Text style={theme.title}>{route.params.qrCodeId}</Text>
                     <Image
