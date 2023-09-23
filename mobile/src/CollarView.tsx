@@ -6,13 +6,17 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { dogPhoto } from './api/dogPhoto';
 import { dogData } from './api/dogData';
 
-export const CollarView = () => {
+export const CollarView = ({ route }) => {
+    const qrCodeId = route.params && route.params.qrCodeId;
     const { data: profilePic } = useQuery({
         queryKey: ['dogPhoto'],
         queryFn: dogPhoto,
-        staleTime: 1000,
     });
 
+    const { data: test } = useQuery({
+        queryKey: ['dogData'],
+        queryFn: dogData,
+    });
     const collarData = {
         uuid: '1-2-3-4',
         pet_name: 'Luna',
