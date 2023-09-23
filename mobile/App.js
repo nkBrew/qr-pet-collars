@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { COLLAR_VIEW, SCAN_QR_HOME, SCAN_QR_VIEW } from './src/navigation/constants';
+import { COLLAR_VIEW, HOME_VIEW, SCAN_QR_HOME, SCAN_QR_VIEW } from './src/navigation/constants';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { CollarView } from './src/CollarView';
 import axios from 'axios';
@@ -17,7 +17,7 @@ export default function App() {
             <NavigationContainer>
                 <Stack.Navigator>
                     <Stack.Screen
-                        name={SCAN_QR_HOME}
+                        name={HOME_VIEW}
                         component={HomeView}
                         options={{
                             headerTitle: 'Home View',
