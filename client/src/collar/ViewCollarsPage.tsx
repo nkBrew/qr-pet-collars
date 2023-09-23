@@ -50,7 +50,7 @@ export const ViewCollarsPage = () => {
                 </Col>
                 {
                     map(collars, (collar) => (
-                        <Col key={collar.id} xl={12} lg={12} md={24} sm={24} xs={24}>
+                        <Col key={collar.qr_code_id} flex={'40rem'}>
                             <CollarCard
                                 img={collar.img_url ? collar.img_url : null}
                                 extra={
