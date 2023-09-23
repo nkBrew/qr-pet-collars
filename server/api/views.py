@@ -24,7 +24,7 @@ def make_qr_code(request, id):
     img.save(buffer)
     code = base64.b64encode(buffer.getvalue()).decode()
 
-    return HttpResponse(f"<img src='data:image/png;base64, {code}'/>")
+    return HttpResponse(f"data:image/png;base64, {code}")
 
 
 def get_csrf(request):
