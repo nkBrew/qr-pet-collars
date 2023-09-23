@@ -1,10 +1,22 @@
+import base64
+import io
 import json
 
 from django.contrib.auth import authenticate, login, logout
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.middleware.csrf import get_token
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_POST
+import qrcode
+
+
+def make_qr_code(request, pk):
+    buffer = io.BytesIO()
+    img = qrcode.make(pk)
+    img.save(buffer)
+    code = base64.b64encode(buffer.getvalue()).decode()
+
+    return HttpResponse(f"<img src='data:image/png;base64, {code}'/>")
 
 
 def get_csrf(request):

@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 django = "4.2.5"
 django-cors-headers = "4.2.0"
+qrcode = "7.4.2"
+pillow = "10.0.1"
 
 [dev-packages]
 
