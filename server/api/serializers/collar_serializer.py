@@ -7,6 +7,7 @@ class CollarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Collar
         fields = (
+            'img_url',
             'pet_name',
             'breed',
             'weight',

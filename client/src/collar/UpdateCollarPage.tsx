@@ -17,6 +17,7 @@ export const UpdateCollarPage = () => {
     const navigate = useNavigate();
     const params = useParams();
     const [messageApi, contextHolder] = message.useMessage();
+    const img = Form.useWatch('img_url', form);
 
     const collarId = Number(params.collarId);
 
@@ -38,6 +39,7 @@ export const UpdateCollarPage = () => {
     useEffect(() => {
         if (collar) {
             form.setFieldsValue({
+                img_url: collar.img_url,
                 pet_name: collar.pet_name,
                 breed: collar.breed,
                 weight: collar.weight,
@@ -50,6 +52,7 @@ export const UpdateCollarPage = () => {
 
     return (
         <CollarCard
+            img={img}
             isLoading={isLoadingCollar}
             extra={
                 <ArrowLeftOutlined
@@ -65,6 +68,7 @@ export const UpdateCollarPage = () => {
                 form={form}
                 showQRCode={false}
                 initialValues={collar && {
+                    img_url: collar.img_url,
                     pet_name: collar.pet_name,
                     breed: collar.breed,
                     weight: collar.weight,
@@ -74,6 +78,7 @@ export const UpdateCollarPage = () => {
                 }}
                 onFinish={(values) => {
                     axios.put(`${API_HOST}/collar/${collarId}/`, {
+                        img_url: values.img_url,
                         pet_name: values.pet_name,
                         breed: values.breed,
                         weight: values.weight,

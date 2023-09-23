@@ -27,6 +27,13 @@ export const CollarForm = (props: Props) => {
             initialValues={initialValues}
         >
             <Form.Item
+              label="Image URL"
+              name="img_url"
+              rules={[{ required: true, type: 'url', message: 'so we can admire your pet' }]}
+            >
+                <Input />
+            </Form.Item>
+            <Form.Item
               label="Name"
               name="pet_name"
               rules={[{ required: true, message: 'who would not give their pet a name' }]}

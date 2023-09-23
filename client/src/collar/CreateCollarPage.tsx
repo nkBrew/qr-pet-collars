@@ -7,18 +7,20 @@ import { CollarForm } from './CollarForm';
 
 export const CreateCollarPage = () => {
     const [form] = Form.useForm();
+    const img = Form.useWatch('img_url', form);
 
     const [messageApi, contextHolder] = message.useMessage();
     const API_HOST = 'http://localhost:8000';
 
     return(
-        <CollarCard>
+        <CollarCard img={img}>
             {contextHolder}
             <CollarForm
                 form={form}
                 showQRCode={true}
                 onFinish={(values) => {
                     axios.post(`${API_HOST}/collar/`, {
+                        img_url: values.img_url,
                         pet_name: values.pet_name,
                         breed: values.breed,
                         weight: values.weight,

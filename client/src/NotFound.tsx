@@ -1,7 +1,5 @@
 import React from 'react';
-import { Button, Col, Image, Row, Space, Typography } from 'antd';
-import { generatePath, useNavigate } from 'react-router';
-import { ROUTES } from './routes';
+import { Button, Image, Space, Typography } from 'antd';
 
 type Props = {
     img: string,

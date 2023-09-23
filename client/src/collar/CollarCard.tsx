@@ -2,8 +2,10 @@ import React from 'react';
 import { Card, Col, Image, Row } from 'antd';
 
 import type { ReactNode } from 'react';
+import { DogImage } from './DogImage';
 
 type Props = {
+    img?: string | null,
     isLoading?: boolean,
     extra?: ReactNode,
     children: ReactNode,
@@ -11,10 +13,12 @@ type Props = {
 
 export const CollarCard = (props: Props) => {
     const {
+        img,
         isLoading = false,
         extra,
         children,
     } = props;
+
     return (
         <Row justify={'center'}>
             <Col flex={'40rem'}>
@@ -29,10 +33,7 @@ export const CollarCard = (props: Props) => {
                                 </Col>
                             }
                             <Col>
-                                <Image
-                                    preview={false}
-                                    src={'https://images.dog.ceo/breeds/germanshepherd/Bagira_site.jpg'}
-                                />
+                                <DogImage img={img} isLoading={isLoading}/>
                             </Col>
                         </Row>
                     }

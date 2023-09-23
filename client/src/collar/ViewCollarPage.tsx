@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { generatePath, useNavigate, useParams } from 'react-router';
 import { useQuery } from 'react-query';
-import { Col, Divider, Row, Typography } from 'antd';
+import { Col, Divider, Row, Skeleton, Typography } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
 
 import { ROUTES } from '../routes';
@@ -38,9 +38,10 @@ export const ViewCollarPage = () => {
                 <CollarSearchCard/>
             </Col>
             {
-                collar
+                collar || isLoadingCollar
                     ? <Col span={24}>
                         <CollarCard
+                            img={collar && collar.img_url ? collar.img_url : null}
                             isLoading={isLoadingCollar}
                             extra={
                                 collar &&
@@ -53,41 +54,45 @@ export const ViewCollarPage = () => {
                                 />
                             }
                         >
-                            <Row justify={'center'} gutter={[0, 8]}>
-                                <Col span={24} style={{ textAlign: 'center' }}>
-                                    <Typography.Title level={3}>
-                                        {collar.pet_name}
-                                    </Typography.Title>
-                                </Col>
-                                <Col span={24} style={{ textAlign: 'center' }}>
-                                    <Typography.Title level={5}>
-                                        {collar.breed}
-                                    </Typography.Title>
-                                </Col>
-                                <Col span={24} style={{ textAlign: 'center' }}>
-                                    <Typography.Text style={{ fontSize: '1.6rem' }}>
-                                        Weight: {Number(collar.weight)}kg
-                                    </Typography.Text>
-                                </Col>
-                                <Col span={24}>
-                                    <Divider style={{ margin: 0 }}/>
-                                </Col>
-                                <Col span={24} style={{ textAlign: 'center' }}>
-                                    <Typography.Text style={{ fontSize: '1.6rem' }}>
-                                        Owner: {collar.owner_name}
-                                    </Typography.Text>
-                                </Col>
-                                <Col span={24} style={{ textAlign: 'center' }}>
-                                    <Typography.Text style={{ fontSize: '1.6rem' }}>
-                                        Email: {collar.owner_email}
-                                    </Typography.Text>
-                                </Col>
-                                <Col span={24} style={{ textAlign: 'center' }}>
-                                    <Typography.Text style={{ fontSize: '1.6rem' }}>
-                                        Phone: {collar.phone_number}
-                                    </Typography.Text>
-                                </Col>
-                            </Row>
+                            {
+                                collar
+                                    ? <Row justify={'center'} gutter={[0, 8]}>
+                                        <Col span={24} style={{ textAlign: 'center' }}>
+                                            <Typography.Title level={3}>
+                                                {collar.pet_name}
+                                            </Typography.Title>
+                                        </Col>
+                                        <Col span={24} style={{ textAlign: 'center' }}>
+                                            <Typography.Title level={5}>
+                                                {collar.breed}
+                                            </Typography.Title>
+                                        </Col>
+                                        <Col span={24} style={{ textAlign: 'center' }}>
+                                            <Typography.Text style={{ fontSize: '1.6rem' }}>
+                                                Weight: {Number(collar.weight)}kg
+                                            </Typography.Text>
+                                        </Col>
+                                        <Col span={24}>
+                                            <Divider style={{ margin: 0 }}/>
+                                        </Col>
+                                        <Col span={24} style={{ textAlign: 'center' }}>
+                                            <Typography.Text style={{ fontSize: '1.6rem' }}>
+                                                Owner: {collar.owner_name}
+                                            </Typography.Text>
+                                        </Col>
+                                        <Col span={24} style={{ textAlign: 'center' }}>
+                                            <Typography.Text style={{ fontSize: '1.6rem' }}>
+                                                Email: {collar.owner_email}
+                                            </Typography.Text>
+                                        </Col>
+                                        <Col span={24} style={{ textAlign: 'center' }}>
+                                            <Typography.Text style={{ fontSize: '1.6rem' }}>
+                                                Phone: {collar.phone_number}
+                                            </Typography.Text>
+                                        </Col>
+                                    </Row>
+                                    : <Skeleton/>
+                            }
                         </CollarCard>
                     </Col>
                     : <Col span={24}>
