@@ -1,12 +1,9 @@
 import { View, Text, Button, Pressable, StyleSheet } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { SCAN_QR_VIEW } from './navigation/constants';
+import { CREATE_COLLAR_VIEW, SCAN_QR_VIEW, UPDATE_COLLAR_VIEW } from './navigation/constants';
 import { theme } from './theme';
 
-/**
- * TODO: Link to actual Update and Create pages
- */
 const HomeView = () => {
     const navigation = useNavigation();
     const handleButtonPress = (view) => {
@@ -20,11 +17,17 @@ const HomeView = () => {
                 <Pressable onPress={() => handleButtonPress(SCAN_QR_VIEW)} style={styles.button}>
                     <Text style={styles.text}>Scan QR Collar</Text>
                 </Pressable>
-                <Pressable onPress={() => handleButtonPress(SCAN_QR_VIEW)} style={styles.button}>
+                <Pressable
+                    onPress={() => handleButtonPress(UPDATE_COLLAR_VIEW)}
+                    style={styles.button}
+                >
                     <Text style={styles.text}>Update</Text>
                 </Pressable>
                 {/* TODO:  */}
-                <Pressable onPress={() => handleButtonPress(SCAN_QR_VIEW)} style={styles.button}>
+                <Pressable
+                    onPress={() => handleButtonPress(CREATE_COLLAR_VIEW)}
+                    style={styles.button}
+                >
                     <Text style={styles.text}>Create</Text>
                 </Pressable>
             </View>
