@@ -23,7 +23,6 @@ const HomeView = () => {
                 >
                     <Text style={styles.text}>Update</Text>
                 </Pressable>
-                {/* TODO:  */}
                 <Pressable
                     onPress={() => handleButtonPress(CREATE_COLLAR_VIEW)}
                     style={styles.button}
