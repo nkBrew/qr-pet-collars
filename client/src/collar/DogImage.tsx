@@ -16,7 +16,7 @@ export const DogImage = (props: Props) => {
         try {
             return new URL(img || '').toString();
         } catch (e) {
-            return '';
+            return 'https://images.dog.ceo/breeds/germanshepherd/Bagira_site.jpg';
         }
     };
 
@@ -32,7 +32,6 @@ export const DogImage = (props: Props) => {
         <Image
             preview={false}
             src={getValidatedImg()}
-            fallback={'https://images.dog.ceo/breeds/germanshepherd/Bagira_site.jpg'}
         />
     );
 };

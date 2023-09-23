@@ -1,10 +1,8 @@
 import React from "react";
 
-import { Button, Card, Col, Form, Input, Row, Typography  } from 'antd';
+import { Button, Card, Col, Row, Typography  } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from './routes';
-
-import { CreateCollarPage } from './collar/CreateCollarPage';
 
 const API_HOST = 'http://localhost:8000';
 
@@ -40,7 +38,6 @@ export const Auth = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log({session: data});
                 if (data.isAuthenticated) {
                     setIsAuthenticated(true);
                 } else {
@@ -76,7 +73,6 @@ export const Auth = () => {
         })
             .then(isResponseOk)
             .then((data) => {
-                console.log({login: data});
                 setIsAuthenticated(true);
                 setUsername("");
                 setPassword("");
@@ -96,7 +92,6 @@ export const Auth = () => {
         })
             .then(isResponseOk)
             .then((data) => {
-                console.log({logout: data});
                 setIsAuthenticated(false);
                 getCSRF();
             })

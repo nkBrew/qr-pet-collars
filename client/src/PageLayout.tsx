@@ -20,11 +20,6 @@ export const PageLayout = (props: Props) => {
 
     const selectedPath = find(values(ROUTES), (route: string) => matchPath(route, location.pathname));
 
-    
-    const logout = () => {
-        navigate(ROUTES.login);
-    };
-
     return (
         <Row gutter={[0, 24]}>
             <Col span={24}>
@@ -37,7 +32,7 @@ export const PageLayout = (props: Props) => {
                                 key: ROUTES.createCollar,
                                 label: 'Create Collar',
                                 icon: <PlusOutlined/>,
-                                onClick: () => navigate(generatePath(ROUTES.createCollar)),
+                                onClick: () => navigate(ROUTES.createCollar),
                             },
                             {
                                 key: ROUTES.viewCollar,
@@ -49,7 +44,7 @@ export const PageLayout = (props: Props) => {
                                 key: ROUTES.login,
                                 label: 'Log Out',
                                 icon: <LogoutOutlined/>,
-                                onClick: logout,
+                                onClick: () => navigate(ROUTES.login),
                             },
                         ]}
                     />
