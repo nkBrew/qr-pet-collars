@@ -1,7 +1,7 @@
 import { Card, Col, Menu, Row } from 'antd';
 import { generatePath, matchPath, useLocation, useNavigate } from 'react-router';
 import { find, values } from 'lodash';
-import { PlusOutlined, ScheduleOutlined } from '@ant-design/icons';
+import { PlusOutlined, ScheduleOutlined, LogoutOutlined } from '@ant-design/icons';
 
 import { ROUTES } from './routes';
 
@@ -19,6 +19,11 @@ export const PageLayout = (props: Props) => {
     const location = useLocation();
 
     const selectedPath = find(values(ROUTES), (route: string) => matchPath(route, location.pathname));
+
+    
+    const logout = () => {
+        navigate(ROUTES.login);
+    };
 
     return (
         <Row gutter={[0, 24]}>
@@ -39,6 +44,12 @@ export const PageLayout = (props: Props) => {
                                 label: 'View Collar',
                                 icon: <ScheduleOutlined/>,
                                 onClick: () => navigate(generatePath(ROUTES.viewCollar, { collarId: '1' })),
+                            },
+                            {
+                                key: ROUTES.login,
+                                label: 'Log Out',
+                                icon: <LogoutOutlined/>,
+                                onClick: logout,
                             },
                         ]}
                     />
