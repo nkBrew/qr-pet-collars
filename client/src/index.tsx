@@ -12,6 +12,7 @@ import { ROUTES } from './routes';
 import Auth from './Auth';
 import { ViewCollarPage } from './ViewCollar/ViewCollarPage';
 import { UpdateCollarPage } from './UpdateCollarPage';
+import { CreateCollarPage } from './CreateCollar/CreateCollarPage';
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ root.render(
                     <Route path={ROUTES.login} element={<Auth/>}/>
                     <Route path={ROUTES.viewCollar} element={<ViewCollarPage/>}/>
                     <Route path={ROUTES.updateCollar} element={<UpdateCollarPage/>}/>
+                    <Route path={ROUTES.createCollar} element={<CreateCollarPage/>}/>
                     <Route path={'*'} element={<Typography.Text>Page Not Found</Typography.Text>}/>
                 </Routes>
             </BrowserRouter>

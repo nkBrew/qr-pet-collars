@@ -1,10 +1,15 @@
 import React from "react";
 
 import { Button, Card, Col, Form, Input, Row, Typography  } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from './routes';
+
+import { CreateCollarPage } from './CreateCollar/CreateCollarPage';
 
 const API_HOST = 'http://localhost:8000';
 
 export const Auth = () => {
+    const navigate = useNavigate();
     const [isAuthenticated, setIsAuthenticated] = React.useState(false);
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
@@ -97,7 +102,7 @@ export const Auth = () => {
     };
 
     const createCollar = () => {
-
+        navigate(ROUTES.createCollar);
     }
 
     if (!isAuthenticated) {
