@@ -30,13 +30,13 @@ export const PageLayout = (props: Props) => {
                         items={[
                             {
                                 key: ROUTES.viewCollars,
-                                label: 'View My Collars',
+                                label: 'View Collars',
                                 icon: <ScheduleOutlined/>,
                                 onClick: () => navigate(ROUTES.viewCollars),
                             },
                             {
                                 key: ROUTES.findCollar,
-                                label: 'Find A Collar',
+                                label: 'Find Collar',
                                 icon: <SearchOutlined/>,
                                 onClick: () => navigate(generatePath(ROUTES.findCollar, { collarId: '1' })),
                             },
