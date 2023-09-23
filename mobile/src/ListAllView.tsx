@@ -16,8 +16,17 @@ const ListAllView = () => {
 
     return (
         <View style={theme.container}>
-            <Text style={{ color: 'white', fontSize: 20, alignSelf: 'center', width: '70%' }}>
-                Here are all your Collars
+            <Text
+                style={{
+                    color: 'white',
+                    fontSize: 25,
+                    width: '80%',
+                    marginTop: 20,
+                    fontWeight: '600',
+                    textAlign: 'center',
+                }}
+            >
+                Here Are All Your Collars
             </Text>
             {collars && <ListCollarsComponent collars={collars} />}
         </View>

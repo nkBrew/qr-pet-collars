@@ -14,7 +14,16 @@ const ListLostView = () => {
     const filtered = collars ? collars.filter((c) => c.is_missing) : [];
     return (
         <View style={theme.container}>
-            <Text style={{ color: 'white', fontSize: 20, alignSelf: 'center', width: '70%' }}>
+            <Text
+                style={{
+                    color: 'white',
+                    fontSize: 25,
+                    width: '80%',
+                    marginTop: 20,
+                    fontWeight: '600',
+                    textAlign: 'center',
+                }}
+            >
                 Have you seen Me?
             </Text>
             {filtered && <ListCollarsComponent collars={filtered} />}

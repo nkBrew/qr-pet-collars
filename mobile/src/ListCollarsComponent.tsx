@@ -17,7 +17,7 @@ const ListCollarsComponent = ({ collars }) => {
                 <View key={i} style={styles.collarContainer}>
                     <Pressable onPress={() => handleCollarPress(collar.qr_code_id)}>
                         <Image
-                            style={{ width: 150, height: 150, borderRadius: 100, marginTop: 48 }}
+                            style={{ width: 150, height: 150, borderRadius: 100, marginTop: 30 }}
                             source={{ uri: collar.img_url }}
                         />
                         <Text style={styles.collarName}>{collar.pet_name}</Text>
@@ -28,26 +28,29 @@ const ListCollarsComponent = ({ collars }) => {
     };
 
     return (
-        <SafeAreaView style={theme.container}>
-            <ScrollView style={styles.container}>{renderCollars()}</ScrollView>
+        <SafeAreaView style={styles.safeareaview}>
+            <ScrollView style={styles.scrollview}>{renderCollars()}</ScrollView>
         </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        color: 'white',
-        width: '98%',
-        // alignItems: 'center',
+    scrollview: {
+        width: '100%',
+    },
+    safeareaview: {
+        width: '100%',
+        flex: 1,
     },
     collarContainer: {
         alignItems: 'center',
     },
     collarName: {
         color: 'white',
-        fontSize: 26,
+        fontSize: 22,
         paddingTop: 20,
         fontWeight: '600',
+        textAlign: 'center',
     },
 });
 
