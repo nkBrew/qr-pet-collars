@@ -58,7 +58,12 @@ export const GenerateQRPage = () => {
                                         ? <Image
                                             preview={false}
                                             src={qrCode}
-                                            style={{ width: '40rem', height: '40rem' }}
+                                            style={{
+                                                width: '40rem',
+                                                height: '40rem',
+                                                borderRadius: '1.6rem',
+                                                filter: 'drop-shadow(rgba(0, 0, 0, 0.3) 0px 1rem 1rem)',
+                                        }}
                                         />
                                         : <Row
                                             align={'middle'}
@@ -67,7 +72,8 @@ export const GenerateQRPage = () => {
                                                 width: '40rem',
                                                 height: '40rem',
                                                 backgroundColor: '#E8E8E8',
-                                                borderRadius: '0.8rem',
+                                                borderRadius: '1.6rem',
+                                                filter: 'drop-shadow(rgba(0, 0, 0, 0.3) 0px 1rem 1rem)',
                                             }}
                                         >
                                             <Col>

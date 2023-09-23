@@ -26,7 +26,7 @@ export const CreateCollarPage = () => {
                     img={img}
                     extra={
                         <ArrowLeftOutlined
-                            style={{ fontSize: '2rem', backgroundColor: '#FFFFFF80', borderRadius: '50%', padding: '1.6rem', margin: '0.8rem' }}
+                            className={'collar-icon-button'}
                             onClick={() => navigate(generatePath(ROUTES.viewCollars))}
                         />
                     }

@@ -22,6 +22,10 @@ export const CollarCard = (props: Props) => {
     return (
         <Card
             loading={isLoading}
+            style={{
+                borderRadius: '1.6rem',
+                filter: 'drop-shadow(rgba(0, 0, 0, 0.3) 0px 1rem 1rem)',
+            }}
             cover={
                 <Row>
                     {

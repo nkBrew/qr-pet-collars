@@ -233,10 +233,10 @@ export const Auth = () => {
                                         <Col span={24}>
                                             <Row justify='center' gutter={16}>
                                                 <Col>
-                                                    <Button onClick={viewCollars}>No</Button>
+                                                    <Button onClick={viewCollars} style={{ width: '8rem' }}>No</Button>
                                                 </Col>
                                                 <Col>
-                                                    <Button type='primary' onClick={logout}>Yes</Button>
+                                                    <Button type='primary' onClick={logout} style={{ width: '8rem' }}>Yes</Button>
                                                 </Col>
                                             </Row>
                                         </Col>
