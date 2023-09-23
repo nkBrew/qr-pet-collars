@@ -4,7 +4,7 @@ import { generatePath, useNavigate } from 'react-router';
 import { useQuery } from 'react-query';
 import { isEmpty, map } from 'lodash';
 import { Alert, Button, Col, Divider, Row, Spin, Typography } from 'antd';
-import { EditOutlined, PlusOutlined } from '@ant-design/icons';
+import { EditOutlined, FrownOutlined, PlusOutlined } from '@ant-design/icons';
 
 import { ROUTES } from '../routes';
 
@@ -81,8 +81,10 @@ export const ViewCollarsPage = () => {
                                                 collar && collar.is_missing &&
                                                 <Col span={24}>
                                                     <Alert
+                                                        showIcon
+                                                        icon={<FrownOutlined style={{ fontSize: '2rem' }}/>}
                                                         type={'warning'}
-                                                        message={`${collar.pet_name} is currently missing :(`}
+                                                        message={`${collar.pet_name} is currently missing`}
                                                     />
                                                 </Col>
                                             }

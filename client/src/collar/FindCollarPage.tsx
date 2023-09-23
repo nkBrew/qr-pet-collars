@@ -43,8 +43,8 @@ export const FindCollarPage = () => {
                                 showIcon
                                 icon={<ExclamationCircleOutlined/>}
                                 type={'warning'}
-                                message={'This pet has been reported as missing!'}
-                                description={'Contact the owner and let them know you have found their pet!'}
+                                message={'This pet has been reported as missing'}
+                                description={'Contact the owner and let them know if you have found their pet'}
                             />
                         </Col>
                     }
