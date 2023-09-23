@@ -15,6 +15,7 @@ export const CollarForm = ({ qrCodeId, refetch, collarData }) => {
     } = useForm({
         defaultValues: {
             qr_code_id: qrCodeId,
+            img_url: collarData ? collarData.img_url : '',
             pet_name: collarData ? collarData.pet_name : '',
             breed: collarData ? collarData.breed : '',
             weight: collarData ? collarData.weight : '',
@@ -32,6 +33,33 @@ export const CollarForm = ({ qrCodeId, refetch, collarData }) => {
     };
     return (
         <View style={{ width: '100%', paddingHorizontal: 24 }}>
+            <Controller
+                control={control}
+                rules={{
+                    required: true,
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                    <InputItem
+                        clear
+                        textAlign={'right'}
+                        labelNumber={labelNumber}
+                        placeholder='Image URL'
+                        last
+                        style={theme.input}
+                        onBlur={onBlur}
+                        onChangeText={onChange}
+                        value={value}
+                    >
+                        <Text style={theme.label}>Image URL</Text>
+                    </InputItem>
+                )}
+                name='img_url'
+            />
+            {errors.pet_name && (
+                <Text style={{ color: 'red', textAlign: 'right', paddingHorizontal: 12 }}>
+                    So we can admire your pet
+                </Text>
+            )}
             <Controller
                 control={control}
                 rules={{
