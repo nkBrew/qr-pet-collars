@@ -12,7 +12,7 @@ import qrcode
 
 def make_qr_code(request, pk):
     buffer = io.BytesIO()
-    img = qrcode.make(pk)
+    img = qrcode.make(f"http://localhost:3000/{pk}")
     img.save(buffer)
     code = base64.b64encode(buffer.getvalue()).decode()
 
