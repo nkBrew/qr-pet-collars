@@ -11,9 +11,6 @@ const API_HOST = 'http://localhost:8000';
 export const Auth = () => {
     const navigate = useNavigate();
     const [isAuthenticated, setIsAuthenticated] = React.useState(false);
-
-    const [trickyFix, setTrickyFix] = React.useState(false);
-
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [csrf, setCsrf] = React.useState("");
@@ -101,7 +98,6 @@ export const Auth = () => {
             .then((data) => {
                 console.log({logout: data});
                 setIsAuthenticated(false);
-                setTrickyFix(true);
                 getCSRF();
             })
             .catch((err) => console.log(err));
@@ -112,7 +108,7 @@ export const Auth = () => {
     }
 
 
-    if (!isAuthenticated && trickyFix) {
+    if (!isAuthenticated) {
         return (
             <Row justify='center'>
                 <Col>
