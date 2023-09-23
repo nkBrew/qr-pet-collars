@@ -11,7 +11,17 @@ export const theme = {
         color: 'white',
     },
     paragraph: {
-        fontSize: 18,
+        fontSize: 16,
         color: 'white',
+    },
+    label: {
+        fontSize: 20,
+        color: 'white',
+        textAlign: 'left',
+    },
+    input: {
+        backgroundColor: 'white',
+        borderRadius: 5,
+        paddingHorizontal: 8,
     },
 };
