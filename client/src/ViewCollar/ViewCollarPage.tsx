@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router';
 import { useQuery } from 'react-query';
-import { Col, Row, Typography } from 'antd';
+import { Card, Col, Image, Row, Typography } from 'antd';
 
 export const ViewCollarPage = () => {
     const params = useParams();
@@ -16,48 +16,73 @@ export const ViewCollarPage = () => {
         queryKey: ['collar', collarId],
         queryFn: () => axios({
             method: 'get',
-            url: `/collar/${collarId}/`,
-        }),
+            url: `http://localhost:8000/collar/${collarId}/`,
+        }).then((response) => response.data),
         enabled: true,
         retry: false,
         refetchOnWindowFocus: false,
         staleTime: 60 * 1000,
     });
-
-    if (isLoadingCollar) {
-        return (
-            <Row>
-                <Col>
-                    <Typography.Text>
-                        Loading...
-                    </Typography.Text>
-                </Col>
-            </Row>
-        );
-    }
-
-    if (!collar) {
-        return (
-            <Row>
-                <Col>
-                    <Typography.Text>
-                        Collar Not Found :(
-                    </Typography.Text>
-                </Col>
-            </Row>
-        );
-    }
+    console.log(collar);
 
     return (
         <Row justify={'center'}>
-            <Col flex={'60rem'}>
-                <Row gutter={[0, 24]}>
-                    <Col span={24}>
-                        <Typography.Text>
-                            Collar Found!
-                        </Typography.Text>
-                    </Col>
-                </Row>
+            <Col flex={'480px'}>
+                <Card
+                    loading={isLoadingCollar}
+                    cover={
+                        <Image
+                            preview={false}
+                            src={'https://images.dog.ceo/breeds/germanshepherd/Bagira_site.jpg'}
+                        />
+                    }
+                >
+                    {
+                        !collar && !isLoadingCollar &&
+                        <Row justify={'center'}>
+                            <Col span={24} style={{ textAlign: 'center' }}>
+                                <Typography.Title level={3}>
+                                    Pet not found :(
+                                </Typography.Title>
+                            </Col>
+                        </Row>
+                    }
+                    {
+                        collar &&
+                        <Row justify={'center'} gutter={[0, 8]}>
+                            <Col span={24} style={{ textAlign: 'center' }}>
+                                <Typography.Title level={3}>
+                                    {collar.pet_name}
+                                </Typography.Title>
+                            </Col>
+                            <Col span={24} style={{ textAlign: 'center' }}>
+                                <Typography.Title level={5}>
+                                    {collar.breed}
+                                </Typography.Title>
+                            </Col>
+                            <Col span={24} style={{ textAlign: 'center' }}>
+                                <Typography.Text>
+                                    {collar.weight}kg
+                                </Typography.Text>
+                            </Col>
+                            <Col span={24} style={{ textAlign: 'center' }}>
+                                <Typography.Text>
+                                    {collar.owner_name}
+                                </Typography.Text>
+                            </Col>
+                            <Col span={24} style={{ textAlign: 'center' }}>
+                                <Typography.Text>
+                                    {collar.owner_email}
+                                </Typography.Text>
+                            </Col>
+                            <Col span={24} style={{ textAlign: 'center' }}>
+                                <Typography.Text>
+                                    {collar.phone_number}
+                                </Typography.Text>
+                            </Col>
+                        </Row>
+                    }
+                </Card>
             </Col>
         </Row>
     );
