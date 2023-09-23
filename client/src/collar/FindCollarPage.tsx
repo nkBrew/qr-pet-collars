@@ -1,11 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import { generatePath, useNavigate, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { useQuery } from 'react-query';
-import { Col, Divider, Row, Skeleton, Typography } from 'antd';
-import { EditOutlined } from '@ant-design/icons';
-
-import { ROUTES } from '../routes';
+import { Alert, Col, Divider, Row, Skeleton, Typography } from 'antd';
 
 import { CollarCard } from './CollarCard';
 import { CollarSearchCard } from './CollarSearchCard';
@@ -14,7 +11,6 @@ import { NotFound } from '../NotFound';
 const API_HOST = 'http://localhost:8000';
 
 export const FindCollarPage = () => {
-    const navigate = useNavigate();
     const params = useParams();
 
     const {
@@ -43,20 +39,20 @@ export const FindCollarPage = () => {
                         <CollarCard
                             img={collar && collar.img_url ? collar.img_url : null}
                             isLoading={isLoadingCollar}
-                            extra={
-                                collar &&
-                                <EditOutlined
-                                    style={{ fontSize: '2rem', backgroundColor: '#FFFFFF80', borderRadius: '50%', padding: '1.6rem', margin: '0.8rem' }}
-                                    onClick={() => navigate(generatePath(
-                                        ROUTES.updateCollar,
-                                        { collarId: params.collarId },
-                                    ))}
-                                />
-                            }
                         >
                             {
                                 collar
                                     ? <Row justify={'center'} gutter={[0, 8]}>
+                                        {
+                                            collar.is_missing &&
+                                            <Col span={24}>
+                                                <Alert
+                                                    type={'warning'}
+                                                    message={'This pet is missing!'}
+                                                    description={'Contact the owner and let them know you have found their pet!'}
+                                                />
+                                            </Col>
+                                        }
                                         <Col span={24} style={{ textAlign: 'center' }}>
                                             <Typography.Title level={3}>
                                                 {collar.pet_name}

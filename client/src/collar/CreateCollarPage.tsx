@@ -18,6 +18,7 @@ export const CreateCollarPage = () => {
             <CollarForm
                 form={form}
                 showQRCode={true}
+                showIsMissing={false}
                 onFinish={(values) => {
                     axios.post(`${API_HOST}/collar/`, {
                         img_url: values.img_url,
@@ -28,6 +29,7 @@ export const CreateCollarPage = () => {
                         owner_email: values.owner_email,
                         phone_number: values.phone_number,
                         qr_code_id: values.qr_code_id,
+                        is_missing: values.is_missing,
                     }).then(() => messageApi.open({
                           type: 'success',
                           content: 'We updated your mutt',

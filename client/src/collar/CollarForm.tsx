@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Input } from 'antd';
 
 import type { FormInstance } from 'antd';
 
@@ -7,6 +7,7 @@ type Props = {
     form: FormInstance
     initialValues?: Object,
     showQRCode: boolean,
+    showIsMissing: boolean,
     onFinish: (values: any) => void,
 };
 
@@ -15,6 +16,7 @@ export const CollarForm = (props: Props) => {
         form,
         initialValues,
         showQRCode,
+        showIsMissing,
         onFinish,
     } = props;
 
@@ -83,6 +85,15 @@ export const CollarForm = (props: Props) => {
                   rules={[{ required: true, message: 'how would I scan this on desktop???' }]}
                 >
                     <Input />
+                </Form.Item>
+            }
+            {
+                showIsMissing &&
+                <Form.Item
+                  name="is_missing"
+                  valuePropName={'checked'}
+                >
+                    <Checkbox>Is this pet missing?</Checkbox>
                 </Form.Item>
             }
             <Button type={'primary'} onClick={() => form.submit()}>Submit</Button>

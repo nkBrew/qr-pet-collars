@@ -46,6 +46,7 @@ export const UpdateCollarPage = () => {
                 owner_name: collar.owner_name,
                 owner_email: collar.owner_email,
                 phone_number: collar.phone_number,
+                is_missing: collar.is_missing,
             });
         }
     }, [collar]);
@@ -64,6 +65,7 @@ export const UpdateCollarPage = () => {
             <CollarForm
                 form={form}
                 showQRCode={false}
+                showIsMissing={true}
                 initialValues={collar && {
                     img_url: collar.img_url,
                     pet_name: collar.pet_name,
@@ -72,6 +74,7 @@ export const UpdateCollarPage = () => {
                     owner_name: collar.owner_name,
                     owner_email: collar.owner_email,
                     phone_number: collar.phone_number,
+                    is_missing: collar.is_missing,
                 }}
                 onFinish={(values) => {
                     axios.put(`${API_HOST}/collar/${collarId}/`, {
@@ -82,7 +85,8 @@ export const UpdateCollarPage = () => {
                         owner_name: values.owner_name,
                         owner_email: values.owner_email,
                         phone_number: values.phone_number,
-                        qr_code_id: collarId
+                        qr_code_id: collarId,
+                        is_missing: values.is_missing,
                     }).then(() => messageApi.open({
                           type: 'success',
                           content: 'We updated your mutt',

@@ -10,3 +10,4 @@ class Collar(models.Model):
     owner_email = models.EmailField()
     phone_number = models.CharField(max_length=20)
     qr_code_id = models.IntegerField()
+    is_missing = models.BooleanField(default=False)
