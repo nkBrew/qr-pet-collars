@@ -185,20 +185,30 @@ export const Auth = () => {
     ];
 
     return (
-        <Row style={{height: 'calc(100vh - 16px)', overflow: 'hidden'}}>
+        <Row style={{ height: 'calc(100vh - 16px)', overflow: 'hidden' }}>
+            <div
+                style={{
+                    width: '100vw',
+                    height: '100vh',
+                    backgroundColor: '#000000DD',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                }}
+            />
             <Col span={24}>
-                <Row gutter={[8, 8]} style={{position:'absolute'}}>
+                <Row gutter={[8, 8]} style={{ position: 'absolute' }}>
                     {images.map(image => {
                         return <Col key={image} flex={1}>
                             <Image
                                 preview={false}
-                                style={{ width: '13vw', height: '13vw', objectFit: 'cover' }}
+                                style={{ width: '13vw', height: '13vw', objectFit: 'cover', opacity: 0.75 }}
                                 src={image}
                             />
                         </Col>
                     })}
                 </Row>
-                <Row align={'middle'} justify={'center'} style={{ height: '95vh' }}>
+                <Row align={'middle'} justify={'center'} style={{ height: '95vh', zIndex: 200 }}>
                     <Col flex={'40rem'}>
                         {
                             isAuthenticated
