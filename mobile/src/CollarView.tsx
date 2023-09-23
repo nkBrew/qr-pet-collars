@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, View, WhiteSpace } from '@ant-design/react-native';
+import { Flex, NoticeBar, View, WhiteSpace } from '@ant-design/react-native';
 import { theme } from './theme';
 import { Text, Image } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
@@ -34,6 +34,10 @@ export const CollarView = ({ route }) => {
                     <Text style={theme.paragraph}>Owner: {collarData.owner_name}</Text>
                     <Text style={theme.paragraph}>{collarData.owner_email}</Text>
                     <Text style={theme.paragraph}>{collarData.phone_number}</Text>
+                    <Text style={theme.paragraph}>{collarData.phone_number}</Text>
+                    {collarData.is_missing &&
+                        <NoticeBar>{collarData.pet_name} is currently missing :(</NoticeBar>
+                    }
                 </Flex>
             ) : (
                 <Text style={theme.paragraph}>We couldn't find a collar with this qr code</Text>
