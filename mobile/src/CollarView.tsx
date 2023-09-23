@@ -1,6 +1,7 @@
 import React from 'react';
 import { Flex, View, WhiteSpace } from '@ant-design/react-native';
 import { theme } from './theme';
+import { RouteProp } from '@react-navigation/native';
 import { Text, StyleSheet, Image } from 'react-native';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { dogPhoto } from './api/dogPhoto';
@@ -30,6 +31,7 @@ export const CollarView = ({ route }) => {
     return (
         <View style={theme.container}>
             <Flex direction={'column'}>
+                <Text style={theme.title}>{route.params.qrCodeId}</Text>
                 <Image
                     style={{ width: 200, height: 200, borderRadius: 100, marginTop: 48 }}
                     source={{ uri: profilePic }}
