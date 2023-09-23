@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Collar
+
+
+class CollarAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Collar, CollarAdmin)
