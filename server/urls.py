@@ -1,7 +1,11 @@
 from django.contrib import admin
 from django.urls import path
+from rest_framework import routers
 
 from api import views
+
+router = routers.SimpleRouter()
+router.register(r'collar', views.CollarView, basename='collar')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -13,6 +17,6 @@ urlpatterns = [
     path('whoami/', views.whoami_view, name='api-whoami'),
 
     path('makeqr/<int:id>/', views.make_qr_code, name='make-qr'),
-    path('collar/<int:qr_code_id>/', views.CollarView.as_view(), name='collar-view-detail'),
-    path('collar/', views.CollarView.as_view(), name='collar-view')
 ]
+
+urlpatterns += router.urls

@@ -12,7 +12,7 @@ import qrcode
 
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework.viewsets import ViewSet
 
 from .models import Collar
 from .serializers.collar_serializer import CollarSerializer
@@ -70,21 +70,34 @@ def whoami_view(request):
     return JsonResponse({'isAuthenticated': False})
 
 
-class CollarView(APIView):
-    def get(self, request, qr_code_id):
-        instance = get_object_or_404(Collar, qr_code_id=qr_code_id)
-        serializer = CollarSerializer(instance=instance)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+class CollarView(ViewSet):
+    lookup_url_kwarg = 'qr_code_id'
 
-    def post(self, request):
+    def list(self, request):
+        queryset = Collar.objects.all()
+        serializer = CollarSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    def create(self, request):
         serializer = CollarSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
-    def put(self, request, qr_code_id):
+    def retrieve(self, request, qr_code_id):
+        instance = get_object_or_404(Collar, qr_code_id=qr_code_id)
+        serializer = CollarSerializer(instance=instance)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def update(self, request, qr_code_id):
         instance = get_object_or_404(Collar, qr_code_id=qr_code_id)
         serializer = CollarSerializer(data=request.data, instance=instance)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+    def destroy(self, request, qr_code_id):
+        instance = get_object_or_404(Collar, qr_code_id=qr_code_id)
+        instance.delete()
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
