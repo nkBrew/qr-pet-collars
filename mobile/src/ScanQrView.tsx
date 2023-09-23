@@ -18,7 +18,8 @@ export const ScanQrView = () => {
     }, []);
 
     const handleBarCodeScanned = ({ type, data }) => {
-        navigation.navigate(COLLAR_VIEW);
+        const qrCodeId = data.substring(data.lastIndexOf('/') + 1);
+        navigation.navigate(COLLAR_VIEW, { qrCodeId });
     };
 
     const renderCamera = () => {
