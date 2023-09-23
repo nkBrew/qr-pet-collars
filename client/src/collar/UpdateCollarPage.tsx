@@ -62,6 +62,7 @@ export const UpdateCollarPage = () => {
                 />
             }
         >
+            {contextHolder}
             <CollarForm
                 form={form}
                 showQRCode={false}

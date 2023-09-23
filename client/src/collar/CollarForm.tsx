@@ -1,5 +1,8 @@
 import React from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { useNavigate } from 'react-router';
+import { Button, Checkbox, Col, Form, Input, Row } from 'antd';
+
+import { ROUTES } from '../routes';
 
 import type { FormInstance } from 'antd';
 
@@ -19,6 +22,7 @@ export const CollarForm = (props: Props) => {
         showIsMissing,
         onFinish,
     } = props;
+    const naviate = useNavigate();
 
     return(
         <Form
@@ -96,7 +100,14 @@ export const CollarForm = (props: Props) => {
                     <Checkbox>Is this pet missing?</Checkbox>
                 </Form.Item>
             }
-            <Button type={'primary'} onClick={() => form.submit()}>Submit</Button>
+            <Row align={'middle'} justify={'end'} gutter={16} wrap={false}>
+                <Col>
+                    <Button onClick={() => naviate(ROUTES.viewCollars)}>Cancel</Button>
+                </Col>
+                <Col>
+                    <Button type={'primary'} onClick={() => form.submit()}>Save</Button>
+                </Col>
+            </Row>
         </Form>
     );
 };

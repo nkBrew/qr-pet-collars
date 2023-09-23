@@ -3,12 +3,12 @@ import axios from 'axios';
 import { generatePath, useNavigate } from 'react-router';
 import { useQuery } from 'react-query';
 import { map } from 'lodash';
-import { Alert, Col, Divider, Row, Spin, Typography } from 'antd';
+import { Alert, Button, Col, Divider, Row, Spin, Typography } from 'antd';
+import { EditOutlined, PlusOutlined } from '@ant-design/icons';
 
 import { ROUTES } from '../routes';
 
 import { CollarCard } from './CollarCard';
-import { EditOutlined } from '@ant-design/icons';
 
 const API_HOST = 'http://localhost:8000';
 
@@ -33,6 +33,21 @@ export const ViewCollarsPage = () => {
     return (
         <Spin spinning={isLoadingCollars}>
             <Row justify={'center'} gutter={[24, 24]}>
+                <Col span={24}>
+                    <Row justify={'center'}>
+                        <Col flex={'40rem'}>
+                            <Button
+                                block
+                                icon={<PlusOutlined/>}
+                                size={'large'}
+                                type={'dashed'}
+                                onClick={() => navigate(ROUTES.createCollar)}
+                            >
+                                Create New Collar
+                            </Button>
+                        </Col>
+                    </Row>
+                </Col>
                 {
                     map(collars, (collar) => (
                         <Col key={collar.id} xl={12} lg={12} md={24} sm={24} xs={24}>

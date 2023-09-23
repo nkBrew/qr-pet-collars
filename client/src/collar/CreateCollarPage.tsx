@@ -1,11 +1,15 @@
 import React from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 import { Form, message } from 'antd';
+
+import { ROUTES } from '../routes';
 
 import { CollarCard } from './CollarCard';
 import { CollarForm } from './CollarForm';
 
 export const CreateCollarPage = () => {
+    const navigate = useNavigate();
     const [form] = Form.useForm();
     const img = Form.useWatch('img_url', form);
 
@@ -30,10 +34,13 @@ export const CreateCollarPage = () => {
                         phone_number: values.phone_number,
                         qr_code_id: values.qr_code_id,
                         is_missing: values.is_missing,
-                    }).then(() => messageApi.open({
-                          type: 'success',
-                          content: 'We updated your mutt',
-                    })).catch((error) => {
+                    }).then(() => {
+                        messageApi.open({
+                            type: 'success',
+                            content: 'We created your mutt',
+                        });
+                        navigate(ROUTES.viewCollars);
+                    }).catch((error) => {
                         messageApi.open({
                           type: 'error',
                           content: `Well the important thing is we tried... ${error.message}`,

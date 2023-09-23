@@ -1,7 +1,7 @@
 import { Card, Col, Menu, Row } from 'antd';
 import { generatePath, matchPath, useLocation, useNavigate } from 'react-router';
 import { find, values } from 'lodash';
-import { PlusOutlined, ScheduleOutlined, LogoutOutlined, SearchOutlined } from '@ant-design/icons';
+import { ScheduleOutlined, LogoutOutlined, SearchOutlined } from '@ant-design/icons';
 
 import { ROUTES } from './routes';
 
@@ -33,12 +33,6 @@ export const PageLayout = (props: Props) => {
                                 label: 'View My Collars',
                                 icon: <ScheduleOutlined/>,
                                 onClick: () => navigate(ROUTES.viewCollars),
-                            },
-                            {
-                                key: ROUTES.createCollar,
-                                label: 'Create Collar',
-                                icon: <PlusOutlined/>,
-                                onClick: () => navigate(ROUTES.createCollar),
                             },
                             {
                                 key: ROUTES.findCollar,
