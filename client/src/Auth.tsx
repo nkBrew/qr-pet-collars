@@ -110,8 +110,8 @@ export const Auth = () => {
         'https://images.dog.ceo/breeds/bulldog-boston/n02096585_11417.jpg',
         'https://images.dog.ceo/breeds/frise-bichon/stevebaxter_bichon_frise.jpg',
         'https://images.dog.ceo/breeds/newfoundland/n02111277_6679.jpg',
-        'https://images.dog.ceo/breeds/terrier-toy/n02087046_5890.jpg',
         'https://images.dog.ceo/breeds/pointer-german/n02100236_1838.jpg',
+        'https://images.dog.ceo/breeds/terrier-toy/n02087046_5890.jpg',
         'https://images.dog.ceo/breeds/buhund-norwegian/hakon1.jpg',
         'https://images.dog.ceo/breeds/labradoodle/Cali.jpg',
         'https://images.dog.ceo/breeds/setter-english/n02100735_3194.jpg',
@@ -120,8 +120,8 @@ export const Auth = () => {
         'https://images.dog.ceo/breeds/pomeranian/n02112018_12853.jpg',
         'https://images.dog.ceo/breeds/bulldog-english/jager-1.jpg',
         'https://images.dog.ceo/breeds/akita/Akita_inu_blanc.jpg',
-        'https://images.dog.ceo/breeds/frise-bichon/3.jpg',
         'https://images.dog.ceo/breeds/chow/n02112137_11273.jpg',
+        'https://images.dog.ceo/breeds/frise-bichon/3.jpg',
         'https://images.dog.ceo/breeds/terrier-toy/n02087046_1666.jpg',
         'https://images.dog.ceo/breeds/mountain-swiss/n02107574_169.jpg',
         'https://images.dog.ceo/breeds/frise-bichon/5.jpg',
@@ -147,7 +147,33 @@ export const Auth = () => {
         'https://images.dog.ceo/breeds/terrier-toy/n02087046_4129.jpg',
         'https://images.dog.ceo/breeds/pyrenees/n02111500_395.jpg',
         'https://images.dog.ceo/breeds/dachshund/Miniature_Daschund.jpg',
-
+        'https://images.dog.ceo/breeds/bulldog-french/n02108915_7115.jpg',
+        'https://images.dog.ceo/breeds/terrier-border/n02093754_2425.jpg',
+        'https://images.dog.ceo/breeds/terrier-westhighland/n02098286_278.jpg',
+        'https://images.dog.ceo/breeds/terrier-lakeland/n02095570_4183.jpg',
+        'https://images.dog.ceo/breeds/terrier-norwich/n02094258_1985.jpg',
+        'https://images.dog.ceo/breeds/hound-ibizan/n02091244_1541.jpg',
+        'https://images.dog.ceo/breeds/poodle-medium/PXL_20210220_100624962.jpg',
+        'https://images.dog.ceo/breeds/newfoundland/n02111277_6096.jpg',
+        'https://images.dog.ceo/breeds/schipperke/n02104365_1292.jpg',
+        'https://images.dog.ceo/breeds/spaniel-cocker/n02102318_9680.jpg',
+        'https://images.dog.ceo/breeds/poodle-toy/n02113624_1844.jpg',
+        'https://images.dog.ceo/breeds/deerhound-scottish/n02092002_5335.jpg',
+        'https://images.dog.ceo/breeds/terrier-bedlington/n02093647_3338.jpg',
+        'https://images.dog.ceo/breeds/maltese/n02085936_4396.jpg',
+        'https://images.dog.ceo/breeds/malamute/n02110063_17378.jpg',
+        'https://images.dog.ceo/breeds/rottweiler/n02106550_6978.jpg',
+        'https://images.dog.ceo/breeds/hound-plott/hhh-23456.jpg',
+        'https://images.dog.ceo/breeds/bulldog-french/n02108915_1119.jpg',
+        'https://images.dog.ceo/breeds/dane-great/n02109047_481.jpg',
+        'https://images.dog.ceo/breeds/poodle-standard/n02113799_419.jpg',
+        'https://images.dog.ceo/breeds/bulldog-boston/n02096585_2042.jpg',
+        'https://images.dog.ceo/breeds/labrador/n02099712_384.jpg',
+        'https://images.dog.ceo/breeds/terrier-toy/n02087046_4135.jpg',
+        'https://images.dog.ceo/breeds/boxer/n02108089_2526.jpg',
+        'https://images.dog.ceo/breeds/frise-bichon/2.jpg',
+        'https://images.dog.ceo/breeds/chow/n02112137_10762.jpg',
+        'https://images.dog.ceo/breeds/hound-basset/n02088238_3359.jpg',
     ];
 
     return (
@@ -168,7 +194,7 @@ export const Auth = () => {
                     <Col>
                         {
                             isAuthenticated
-                                ? <Card>
+                                ? <Card style={{opacity: 0.9}}>
                                     <Row justify='center' gutter={5}>
                                         <Col>
                                             <Image
@@ -192,7 +218,7 @@ export const Auth = () => {
                                         </Col>
                                     </Row>
                                 </Card>
-                                : <Card>
+                                : <Card style={{opacity: 0.9}}>
                                     <Typography.Title level={2}>who let the dogs out?</Typography.Title>
                                     <br/>
                                     <Row justify='center' gutter={5}>
