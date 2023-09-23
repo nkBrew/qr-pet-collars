@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, Card, Col, Row, Typography  } from 'antd';
+import { Button, Card, Col, Image, Row, Space, Typography  } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from './routes';
 
@@ -104,54 +104,78 @@ export const Auth = () => {
 
     if (!isAuthenticated) {
         return (
-            <Row justify='center'>
+            <Row align={'middle'} justify={'center'} style={{ height: '90vh' }}>
                 <Col>
-                    <Card>
-                        <Typography.Title>who let the dogs out?</Typography.Title>
-                        <br/>
-                        <form onSubmit={login}>
+                        <Card>
+                            <Typography.Title>who let the dogs out?</Typography.Title>
+                            <br/>
                             <Row justify='center' gutter={5}>
                                 <Col>
-                                    <Typography.Text>Username: </Typography.Text>
-                                    <br/>
-                                    <Typography.Text>Password: </Typography.Text>
-                                </Col>
-                                <Col>
-                                    <input type="text" className="form-control" id="username" name="username"
-                                        value={username} onChange={(event) => setUsername(event.target.value)}/>
-                                    <br/>
-                                    <input type="password" className="form-control" id="password" name="password"
-                                        value={password} onChange={(event) => setPassword(event.target.value)}/>
-                                </Col>
-                            </Row>
-                            <Row justify='center'>
-                                <Col>
-                                    {error &&
-                                        <Typography.Text type={'danger'}>
-                                            {error}
-                                        </Typography.Text>
-                                    }
-                                    {!error &&
-                                        <br/>
-                                    }
+                                    <Image
+                                        preview={false}
+                                        style={{ width: '16rem', height: '16rem', borderRadius: '20%', objectFit: 'cover' }}
+                                        src={'https://images.dog.ceo/breeds/retriever-chesapeake/n02099849_1408.jpg'}
+                                        //https://images.dog.ceo/breeds/retriever-chesapeake/n02099849_1408.jpg
+                                        //https://images.dog.ceo/breeds/newfoundland/n02111277_6679.jpg
+                                    />
                                 </Col>
                             </Row>
                             <br/>
-                            <Row justify='center'>
-                                <Col>
-                                    <Button htmlType="submit">Login</Button>
-                                </Col>
-                            </Row>
-                        </form>
-                    </Card>
+                            <form onSubmit={login}>
+                                <Row justify='center' gutter={5}>
+                                    <Col>
+                                        <Typography.Text>Username: </Typography.Text>
+                                        <br/>
+                                        <Typography.Text>Password: </Typography.Text>
+                                    </Col>
+                                    <Col>
+                                        <input type="text" className="form-control" id="username" name="username"
+                                            value={username} onChange={(event) => setUsername(event.target.value)}/>
+                                        <br/>
+                                        <input type="password" className="form-control" id="password" name="password"
+                                            value={password} onChange={(event) => setPassword(event.target.value)}/>
+                                    </Col>
+                                </Row>
+                                <Row justify='center'>
+                                    <Col>
+                                        {error &&
+                                            <Typography.Text type={'danger'}>
+                                                {error}
+                                            </Typography.Text>
+                                        }
+                                        {!error &&
+                                            <br/>
+                                        }
+                                    </Col>
+                                </Row>
+                                <br/>
+                                <Row justify='center'>
+                                    <Col>
+                                        <Button htmlType="submit">Login</Button>
+                                    </Col>
+                                </Row>
+                            </form>
+                        </Card>
                 </Col>
             </Row>
         );
     }
     return (
-        <Row justify='center'>
+        <Row align={'middle'} justify={'center'} style={{ height: '90vh' }}>
             <Col>
                 <Card>
+                    <Row justify='center' gutter={5}>
+                        <Col>
+                            <Image
+                                preview={false}
+                                style={{ width: '16rem', height: '16rem', borderRadius: '50%', objectFit: 'cover' }}
+                                src={'https://images.dog.ceo/breeds/greyhound-italian/n02091032_658.jpg'}
+                                //https://images.dog.ceo/breeds/retriever-chesapeake/n02099849_1408.jpg
+
+                            />
+                        </Col>
+                    </Row>
+                    <br/>
                     <Typography.Text>are you sure you want to log out?</Typography.Text>
                     <br/>
                     <br/>
