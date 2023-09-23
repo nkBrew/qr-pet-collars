@@ -34,7 +34,7 @@ export const ViewCollarsPage = () => {
     return (
         <Spin spinning={isLoadingCollars}>
             {
-                isEmpty(collars)
+                isEmpty(collars) && !isLoadingCollars
                     ? <Row justify={'center'}>
                         <Col>
                             <NotFound

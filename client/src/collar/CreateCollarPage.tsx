@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router';
+import { generatePath, useNavigate } from 'react-router';
 import { useQueryClient } from 'react-query';
 import { Col, Form, message, Row } from 'antd';
+import { ArrowLeftOutlined } from '@ant-design/icons';
 
 import { ROUTES } from '../routes';
 
@@ -21,7 +22,15 @@ export const CreateCollarPage = () => {
     return(
         <Row justify={'center'}>
             <Col flex={'40rem'}>
-                <CollarCard img={img}>
+                <CollarCard
+                    img={img}
+                    extra={
+                        <ArrowLeftOutlined
+                            style={{ fontSize: '2rem', backgroundColor: '#FFFFFF80', borderRadius: '50%', padding: '1.6rem', margin: '0.8rem' }}
+                            onClick={() => navigate(generatePath(ROUTES.viewCollars))}
+                        />
+                    }
+                >
                     {contextHolder}
                     <CollarForm
                         form={form}

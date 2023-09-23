@@ -111,12 +111,12 @@ export const CollarForm = (props: Props) => {
                     <Checkbox>Is this pet missing?</Checkbox>
                 </Form.Item>
             }
-            <Row align={'middle'} justify={'space-between'} gutter={16} wrap={false}>
+            <Row align={'middle'} gutter={16} wrap={false}>
                 {modalContext}
                 {messageContext}
                 {
                     showDelete && params.collarId &&
-                    <Col>
+                    <Col flex={0}>
                         <Button
                             danger
                             onClick={() => {
@@ -144,7 +144,7 @@ export const CollarForm = (props: Props) => {
                         </Button>
                     </Col>
                 }
-                <Col>
+                <Col flex={1}>
                     <Row align={'middle'} justify={'end'} gutter={16} wrap={false}>
                         <Col>
                             <Button onClick={() => navigate(ROUTES.viewCollars)}>Cancel</Button>
