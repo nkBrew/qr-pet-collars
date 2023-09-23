@@ -8,3 +8,4 @@ class Collar(models.Model):
     owner_name = models.CharField(max_length=100)
     owner_email = models.EmailField()
     phone_number = models.CharField(max_length=20)
+    qr_code_id = models.IntegerField()

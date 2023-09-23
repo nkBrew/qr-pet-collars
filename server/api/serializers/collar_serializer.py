@@ -7,11 +7,11 @@ class CollarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Collar
         fields = (
-            'id',
             'pet_name',
             'breed',
             'weight',
             'owner_name',
             'owner_email',
             'phone_number',
+            'qr_code_id',
         )
