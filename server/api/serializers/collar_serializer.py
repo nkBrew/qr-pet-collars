@@ -18,5 +18,6 @@ class CollarSerializer(serializers.ModelSerializer):
         )
 
     def validate_qr_code_id(self, value):
-        if Collar.objects.filter(qr_code_id=value).exists():
+        if Collar.objects.filter(qr_code_id=value).exists() and self.instance.qr_code_id != value:
             raise serializers.ValidationError("you can't just _scan_ someone else's dog as your own...")
+        return value
