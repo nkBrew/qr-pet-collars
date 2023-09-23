@@ -9,6 +9,7 @@ import { ROUTES } from '../routes';
 
 import { CollarCard } from './CollarCard';
 import { CollarSearchCard } from './CollarSearchCard';
+import { NotFound } from '../NotFound';
 
 const API_HOST = 'http://localhost:8000';
 
@@ -36,23 +37,23 @@ export const ViewCollarPage = () => {
             <Col flex={'40rem'}>
                 <CollarSearchCard/>
             </Col>
-            <Col span={24}>
-                <CollarCard
-                    isLoading={isLoadingCollar}
-                    extra={
-                        collar &&
-                        <EditOutlined
-                            style={{ fontSize: '2rem', backgroundColor: '#FFFFFF80', borderRadius: '50%', padding: '1.6rem', margin: '0.8rem' }}
-                            onClick={() => navigate(generatePath(
-                                ROUTES.updateCollar,
-                                { collarId: params.collarId },
-                            ))}
-                        />
-                    }
-                >
-                    {
-                        collar
-                            ? <Row justify={'center'} gutter={[0, 8]}>
+            {
+                collar
+                    ? <Col span={24}>
+                        <CollarCard
+                            isLoading={isLoadingCollar}
+                            extra={
+                                collar &&
+                                <EditOutlined
+                                    style={{ fontSize: '2rem', backgroundColor: '#FFFFFF80', borderRadius: '50%', padding: '1.6rem', margin: '0.8rem' }}
+                                    onClick={() => navigate(generatePath(
+                                        ROUTES.updateCollar,
+                                        { collarId: params.collarId },
+                                    ))}
+                                />
+                            }
+                        >
+                            <Row justify={'center'} gutter={[0, 8]}>
                                 <Col span={24} style={{ textAlign: 'center' }}>
                                     <Typography.Title level={3}>
                                         {collar.pet_name}
@@ -87,16 +88,19 @@ export const ViewCollarPage = () => {
                                     </Typography.Text>
                                 </Col>
                             </Row>
-                            : <Row justify={'center'}>
-                                <Col span={24} style={{ textAlign: 'center' }}>
-                                    <Typography.Title level={3}>
-                                        Pet not found :(
-                                    </Typography.Title>
-                                </Col>
-                            </Row>
-                    }
-                </CollarCard>
-            </Col>
+                        </CollarCard>
+                    </Col>
+                    : <Col span={24}>
+                        <Row justify={'center'}>
+                            <Col>
+                                <NotFound
+                                    img={'https://images.dog.ceo/breeds/terrier-westhighland/n02098286_302.jpg'}
+                                    description={'We couldn\'t find the collar you are looking for'}
+                                />
+                            </Col>
+                        </Row>
+                    </Col>
+            }
         </Row>
     );
 };

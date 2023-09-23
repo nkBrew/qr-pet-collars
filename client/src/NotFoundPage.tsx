@@ -1,7 +1,10 @@
 import React from 'react';
-import { Button, Col, Image, Row, Space, Typography } from 'antd';
 import { generatePath, useNavigate } from 'react-router';
+import { Col, Row } from 'antd';
+
 import { ROUTES } from './routes';
+
+import { NotFound } from './NotFound';
 
 export const NotFoundPage = () => {
     const navigate = useNavigate();
@@ -9,19 +12,12 @@ export const NotFoundPage = () => {
     return (
         <Row align={'middle'} justify={'center'} style={{ height: '90vh' }}>
             <Col>
-                <Space direction={'vertical'} align={'center'}>
-                    <Image
-                        preview={false}
-                        style={{ width: '40rem', height: '40rem', borderRadius: '50%', objectFit: 'cover' }}
-                        src={'https://images.dog.ceo/breeds/terrier-norfolk/n02094114_1076.jpg'}
-                    />
-                    <Typography.Title level={3}>
-                        Oops! Looks like you got lost
-                    </Typography.Title>
-                    <Button type={'primary'} onClick={() => navigate(generatePath(ROUTES.createCollar))}>
-                        Back to Safety
-                    </Button>
-                </Space>
+                <NotFound
+                    img={'https://images.dog.ceo/breeds/terrier-norfolk/n02094114_1076.jpg'}
+                    description={'Oops! Looks like you got lost'}
+                    buttonText={'Take me back'}
+                    buttonAction={() => navigate(generatePath(ROUTES.createCollar))}
+                />
             </Col>
         </Row>
     );
