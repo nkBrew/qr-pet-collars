@@ -39,7 +39,6 @@ export const GenerateQRPage = () => {
                                 rules={[{
                                     type: 'number',
                                     required: true,
-                                    whitespace: true,
                                 }]}
                             >
                                 <InputNumber min={1} style={{ width: '100%' }}/>
