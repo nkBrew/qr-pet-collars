@@ -1,7 +1,7 @@
 import { Card, Col, Menu, Row } from 'antd';
 import { generatePath, matchPath, useLocation, useNavigate } from 'react-router';
 import { find, values } from 'lodash';
-import { PlusOutlined, ScheduleOutlined, LogoutOutlined } from '@ant-design/icons';
+import { ScheduleOutlined, LogoutOutlined, SearchOutlined } from '@ant-design/icons';
 
 import { ROUTES } from './routes';
 
@@ -23,22 +23,22 @@ export const PageLayout = (props: Props) => {
     return (
         <Row gutter={[0, 24]}>
             <Col span={24}>
-                <Card>
+                <Card bodyStyle={{ padding: '1.6rem 0' }}>
                     <Menu
                         selectedKeys={[`${selectedPath}`]}
                         mode={'horizontal'}
                         items={[
                             {
-                                key: ROUTES.createCollar,
-                                label: 'Create Collar',
-                                icon: <PlusOutlined/>,
-                                onClick: () => navigate(ROUTES.createCollar),
+                                key: ROUTES.viewCollars,
+                                label: 'View Collars',
+                                icon: <ScheduleOutlined/>,
+                                onClick: () => navigate(ROUTES.viewCollars),
                             },
                             {
-                                key: ROUTES.viewCollar,
-                                label: 'View Collar',
-                                icon: <ScheduleOutlined/>,
-                                onClick: () => navigate(generatePath(ROUTES.viewCollar, { collarId: '1' })),
+                                key: ROUTES.findCollar,
+                                label: 'Find Collar',
+                                icon: <SearchOutlined/>,
+                                onClick: () => navigate(generatePath(ROUTES.findCollar, { collarId: '1' })),
                             },
                             {
                                 key: ROUTES.login,

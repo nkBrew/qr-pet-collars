@@ -20,7 +20,7 @@ export const CollarSearchCard = () => {
                         onFinish={({ collarId }) => {
                             if (!isEmpty(collarId)) {
                                 navigate(
-                                    generatePath(ROUTES.viewCollar, { collarId: collarId }),
+                                    generatePath(ROUTES.findCollar, { collarId: collarId }),
                                     { replace: true },
                                 );
                             }

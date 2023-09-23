@@ -8,6 +8,7 @@
   "dependencies": {
     "@ant-design/icons-react-native": "2.3.2",
     "@ant-design/react-native": "5.0.4",
+    "@expo/vector-icons": "^13.0.0",
     "@expo/webpack-config": "19.0.0",
     "@react-native-camera-roll/camera-roll": "npm:expo-media-library@15.4.1",
     "@react-native-community/datetimepicker": "7.2.0",

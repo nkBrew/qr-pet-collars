@@ -1,12 +1,22 @@
 import React from 'react';
-import { Button, Form, Input } from 'antd';
+import axios from 'axios';
+import { useNavigate, useParams } from 'react-router';
+import { useQueryClient } from 'react-query';
+import { Button, Checkbox, Col, Form, Input, message, Modal, Row } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
+
+import { ROUTES } from '../routes';
 
 import type { FormInstance } from 'antd';
+
+const API_HOST = 'http://localhost:8000';
 
 type Props = {
     form: FormInstance
     initialValues?: Object,
     showQRCode: boolean,
+    showIsMissing: boolean,
+    showDelete: boolean,
     onFinish: (values: any) => void,
 };
 
@@ -15,8 +25,15 @@ export const CollarForm = (props: Props) => {
         form,
         initialValues,
         showQRCode,
+        showIsMissing,
+        showDelete,
         onFinish,
     } = props;
+    const params = useParams();
+    const [messageApi, messageContext] = message.useMessage();
+    const [modal, modalContext] = Modal.useModal();
+    const navigate = useNavigate();
+    const queryClient = useQueryClient();
 
     return(
         <Form
@@ -85,7 +102,64 @@ export const CollarForm = (props: Props) => {
                     <Input />
                 </Form.Item>
             }
-            <Button type={'primary'} onClick={() => form.submit()}>Submit</Button>
+            {
+                showIsMissing &&
+                <Form.Item
+                  name="is_missing"
+                  valuePropName={'checked'}
+                >
+                    <Checkbox>Is this pet missing?</Checkbox>
+                </Form.Item>
+            }
+            <Row align={'middle'} justify={'space-between'} gutter={16} wrap={false}>
+                {modalContext}
+                {messageContext}
+                {
+                    showDelete && params.collarId &&
+                    <Col>
+                        <Button
+                            danger
+                            onClick={() => {
+                                modal.confirm({
+                                    icon: <ExclamationCircleOutlined/>,
+                                    title: 'Are you sure you want to delete this collar?',
+                                    okText: 'Yes, I\'m sure',
+                                    cancelText: 'No, cancel',
+                                    onOk: () => {
+                                        axios.delete(`${API_HOST}/collar/${params.collarId}/`).then(() => {
+                                            queryClient.invalidateQueries({ queryKey: ['collars'] }).then(() => {
+                                                navigate(ROUTES.viewCollars);
+                                            });
+                                        }).catch((error) => {
+                                            messageApi.open({
+                                              type: 'error',
+                                              content: `Well the important thing is we tried... ${error.message}`,
+                                            })
+                                        })
+                                    },
+                                })
+                            }}
+                        >
+                            Delete
+                        </Button>
+                    </Col>
+                }
+                <Col>
+                    <Row align={'middle'} justify={'end'} gutter={16} wrap={false}>
+                        <Col>
+                            <Button onClick={() => navigate(ROUTES.viewCollars)}>Cancel</Button>
+                        </Col>
+                        <Col>
+                            <Button
+                                type={'primary'}
+                                onClick={() => form.submit()}
+                            >
+                                Save
+                            </Button>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
         </Form>
     );
 };

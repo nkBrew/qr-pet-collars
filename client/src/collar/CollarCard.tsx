@@ -20,27 +20,23 @@ export const CollarCard = (props: Props) => {
     } = props;
 
     return (
-        <Row justify={'center'}>
-            <Col flex={'40rem'}>
-                <Card
-                    loading={isLoading}
-                    cover={
-                        <Row>
-                            {
-                                Boolean(extra) &&
-                                <Col style={{ position: 'absolute', top: 0, right: 0, zIndex: 100 }}>
-                                    {extra}
-                                </Col>
-                            }
-                            <Col>
-                                <DogImage img={img} isLoading={isLoading}/>
-                            </Col>
-                        </Row>
+        <Card
+            loading={isLoading}
+            cover={
+                <Row>
+                    {
+                        Boolean(extra) &&
+                        <Col style={{ position: 'absolute', top: 0, right: 0, zIndex: 100 }}>
+                            {extra}
+                        </Col>
                     }
-                >
-                    {children}
-                </Card>
-            </Col>
-        </Row>
+                    <Col>
+                        <DogImage img={img} isLoading={isLoading}/>
+                    </Col>
+                </Row>
+            }
+        >
+            {children}
+        </Card>
     );
 };
