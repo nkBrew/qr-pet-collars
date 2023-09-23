@@ -9,16 +9,11 @@ import { AntDesign, FontAwesome, MaterialCommunityIcons } from '@expo/vector-ico
 
 export const CollarView = ({ route }) => {
     const qrCodeId = route.params && route.params.qrCodeId;
-    const { data: profilePic } = useQuery({
-        queryKey: ['dogPhoto'],
-        queryFn: dogPhoto,
-    });
 
     const { data: collarData, isLoading } = useQuery({
         queryKey: ['dogData'],
         queryFn: () => getCollar(qrCodeId || 1),
     });
-
     return (
         <View style={theme.container}>
             {collarData && !isLoading ? (
@@ -32,7 +27,7 @@ export const CollarView = ({ route }) => {
                             marginBottom: 32,
                         }}
                         source={{
-                            uri: profilePic,
+                            uri: collarData.img_url,
                         }}
                     />
                     <Text style={theme.title}>{collarData.pet_name}</Text>
