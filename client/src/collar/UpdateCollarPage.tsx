@@ -57,10 +57,7 @@ export const UpdateCollarPage = () => {
             extra={
                 <ArrowLeftOutlined
                     style={{ fontSize: '2rem', backgroundColor: '#FFFFFF80', borderRadius: '50%', padding: '1.6rem', margin: '0.8rem' }}
-                    onClick={() => navigate(generatePath(
-                        ROUTES.viewCollar,
-                        { collarId: params.collarId },
-                    ))}
+                    onClick={() => navigate(generatePath(ROUTES.viewCollars))}
                 />
             }
         >
