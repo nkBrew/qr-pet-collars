@@ -13,6 +13,6 @@ urlpatterns = [
     path('whoami/', views.whoami_view, name='api-whoami'),
 
     path('makeqr/<int:id>/', views.make_qr_code, name='make-qr'),
-    path('collar/<int:id>/', views.CollarView.as_view(), name='collar-view-detail'),
+    path('collar/<int:qr_code_id>/', views.CollarView.as_view(), name='collar-view-detail'),
     path('collar/', views.CollarView.as_view(), name='collar-view')
 ]
