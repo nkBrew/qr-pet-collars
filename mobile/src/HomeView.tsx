@@ -7,6 +7,7 @@ import {
     COLLAR_VIEW,
     SCAN_QR_VIEW,
     UPDATE_COLLAR_VIEW,
+    LIST_LOST_VIEW,
 } from './navigation/constants';
 import { theme } from './theme';
 
@@ -15,10 +16,11 @@ const HomeView = () => {
     const handleButtonPress = (view) => {
         if (!view) return;
 
-        if (view === LIST_ALL_VIEW) {
+        if ([LIST_LOST_VIEW, LIST_ALL_VIEW].includes(view)) {
             navigation.navigate(view);
             return;
         }
+
         navigation.navigate(SCAN_QR_VIEW, { navigateTo: view });
     };
     return (
@@ -41,6 +43,9 @@ const HomeView = () => {
                 </Pressable>
                 <Pressable onPress={() => handleButtonPress(LIST_ALL_VIEW)} style={styles.button}>
                     <Text style={styles.text}>ListAll</Text>
+                </Pressable>
+                <Pressable onPress={() => handleButtonPress(LIST_LOST_VIEW)} style={styles.button}>
+                    <Text style={styles.text}>Missing</Text>
                 </Pressable>
             </View>
         </View>

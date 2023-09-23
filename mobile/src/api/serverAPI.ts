@@ -45,7 +45,6 @@ export const listAll = () => {
     return api
         .get(`/collar/`)
         .then((response) => {
-            console.log(response.data);
             return response.data;
         })
         .catch((error) => {

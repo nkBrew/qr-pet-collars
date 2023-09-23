@@ -4,3 +4,4 @@ export const CREATE_COLLAR_VIEW = 'CREATE_COLLAR_VIEW';
 export const SCAN_QR_VIEW = 'SCAN_QR_VIEW';
 export const HOME_VIEW = 'HOME_VIEW';
 export const LIST_ALL_VIEW = 'LIST_ALL_VIEW';
+export const LIST_LOST_VIEW = 'LIST_LOST_VIEW';

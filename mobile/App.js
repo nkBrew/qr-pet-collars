@@ -8,6 +8,7 @@ import {
     CREATE_COLLAR_VIEW,
     UPDATE_COLLAR_VIEW,
     LIST_ALL_VIEW,
+    LIST_LOST_VIEW,
 } from './src/navigation/constants';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { CollarView } from './src/CollarView';
@@ -16,6 +17,7 @@ import HomeView from './src/HomeView';
 import { UpdateCollarView } from './src/UpdateCollarView';
 import { CreateCollarView } from './src/CreateCollarView';
 import ListAllView from './src/ListAllView';
+import ListLostView from './src/ListLostView';
 
 const Stack = createNativeStackNavigator();
 const queryClient = new QueryClient();
@@ -68,6 +70,14 @@ export default function App() {
                     <Stack.Screen
                         name={LIST_ALL_VIEW}
                         component={ListAllView}
+                        options={{
+                            headerTitle: 'List View',
+                            headerStyle: { backgroundColor: 'rgba(34,40,49,0.29)' },
+                        }}
+                    />
+                    <Stack.Screen
+                        name={LIST_LOST_VIEW}
+                        component={ListLostView}
                         options={{
                             headerTitle: 'List View',
                             headerStyle: { backgroundColor: 'rgba(34,40,49,0.29)' },
