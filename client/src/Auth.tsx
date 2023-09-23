@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Button, Card, Col, Form, Input, Row, Typography  } from 'antd';
+
 const API_HOST = 'http://localhost:8000';
 
 export const Auth = () => {
@@ -106,38 +108,47 @@ export const Auth = () => {
 
     if (!isAuthenticated) {
         return (
-            <div>
-                <h1>Auth</h1>
-                <form onSubmit={login}>
-                    <div className="form-group">
-                        <label htmlFor="username">Username</label>
-                        <input type="text" className="form-control" id="username" name="username"
-                               value={username} onChange={(event) => setUsername(event.target.value)}/>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="username">Password</label>
-                        <input type="password" className="form-control" id="password" name="password"
-                               value={password} onChange={(event) => setPassword(event.target.value)}/>
-                        <div>
-                            {error &&
-                                <small className="text-danger">
-                                    {error}
-                                </small>
-                            }
-                        </div>
-                    </div>
-                    <button type="submit">Login</button>
-                </form>
-            </div>
+            <Row justify='center'>
+                <Col>
+                    <Card>
+                        <Typography.Title>Auth</Typography.Title>
+                        <form onSubmit={login}>
+                            <div className="form-group">
+                                <Typography.Text>Username: </Typography.Text>
+                                <input type="text" className="form-control" id="username" name="username"
+                                       value={username} onChange={(event) => setUsername(event.target.value)}/>
+                            </div>
+                            <div className="form-group">
+                                <Typography.Text>Password: </Typography.Text>
+                                <input type="password" className="form-control" id="password" name="password"
+                                       value={password} onChange={(event) => setPassword(event.target.value)}/>
+                                <div>
+                                    {error &&
+                                        <small className="text-danger">
+                                            {error}
+                                        </small>
+                                    }
+                                </div>
+                            </div>
+                            <Button htmlType="submit">Login</Button>
+                        </form>
+                    </Card>
+                </Col>
+            </Row>
         );
     }
     return (
-        <div>
-            <h1>Auth</h1>
-            <p>You are logged in!</p>
-            <button onClick={whoami}>WhoAmI</button>
-            <button onClick={logout}>Log out</button>
-        </div>
+        <Row justify='center'>
+            <Col>
+                <Card>
+                    <Typography.Title>Auth</Typography.Title>
+                    <Typography.Text>You are logged in!</Typography.Text>
+                    <br/>
+                    <Button onClick={whoami}>WhoAmI</Button>
+                    <Button onClick={logout}>Log out</Button>
+                </Card>
+            </Col>
+        </Row>
     )
 }
 
