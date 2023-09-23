@@ -48,17 +48,7 @@ export const Auth = () => {
             });
     }
 
-    const whoami = () => {
-        fetch(`${API_HOST}/whoami/`, {
-            headers: {
-                "Content-Type": "application/json",
-            },
-            credentials: "include",
-        })
-            .then((res) => res.json())
-            .then((data) => console.log("You are logged in as: " + data.username))
-            .catch((err) => console.log({err}));
-    }
+
 
     const isResponseOk = (response: Response) => {
         if (response.status >= 200 && response.status <= 299) {
@@ -113,15 +103,23 @@ export const Auth = () => {
                     <Card>
                         <Typography.Title>Auth</Typography.Title>
                         <form onSubmit={login}>
+                            <Row gutter={3}>
+                                <Col>
+                                    <Typography.Text>Username: </Typography.Text>
+                                    <br/>
+                                    <Typography.Text>Password: </Typography.Text>
+                                </Col>
+                                <Col>
+                                    <input type="text" className="form-control" id="username" name="username"
+                                        value={username} onChange={(event) => setUsername(event.target.value)}/>
+                                    <br/>
+                                    <input type="password" className="form-control" id="password" name="password"
+                                        value={password} onChange={(event) => setPassword(event.target.value)}/>
+                                </Col>
+                            </Row>
                             <div className="form-group">
-                                <Typography.Text>Username: </Typography.Text>
-                                <input type="text" className="form-control" id="username" name="username"
-                                       value={username} onChange={(event) => setUsername(event.target.value)}/>
-                            </div>
-                            <div className="form-group">
-                                <Typography.Text>Password: </Typography.Text>
-                                <input type="password" className="form-control" id="password" name="password"
-                                       value={password} onChange={(event) => setPassword(event.target.value)}/>
+
+
                                 <div>
                                     {error &&
                                         <small className="text-danger">
@@ -130,7 +128,12 @@ export const Auth = () => {
                                     }
                                 </div>
                             </div>
-                            <Button htmlType="submit">Login</Button>
+                            <br/>
+                            <Row justify='center'>
+                                <Col>
+                                    <Button htmlType="submit">Login</Button>
+                                </Col>
+                            </Row>
                         </form>
                     </Card>
                 </Col>
@@ -141,11 +144,13 @@ export const Auth = () => {
         <Row justify='center'>
             <Col>
                 <Card>
-                    <Typography.Title>Auth</Typography.Title>
-                    <Typography.Text>You are logged in!</Typography.Text>
+                    <Typography.Title>You are logged in!</Typography.Title>
                     <br/>
-                    <Button onClick={whoami}>WhoAmI</Button>
-                    <Button onClick={logout}>Log out</Button>
+                    <Row justify='center'>
+                        <Col>
+                            <Button onClick={logout}>Log out</Button>
+                        </Col>
+                    </Row>
                 </Card>
             </Col>
         </Row>
