@@ -99,7 +99,7 @@ export const Auth = () => {
 
     const images = [
         'https://images.dog.ceo/breeds/schnauzer-giant/n02097130_4467.jpg',
-        'https://images.dog.ceo/breeds/retriever-golden/n02099601_2796.jpg',
+        'https://images.dog.ceo/breeds/hound-basset/n02088238_11542.jpg',
         'https://images.dog.ceo/breeds/rottweiler/n02106550_2725.jpg',
         'https://images.dog.ceo/breeds/terrier-border/n02093754_2457.jpg',
         'https://images.dog.ceo/breeds/elkhound-norwegian/n02091467_6103.jpg',
@@ -170,6 +170,18 @@ export const Auth = () => {
         'https://images.dog.ceo/breeds/frise-bichon/2.jpg',
         'https://images.dog.ceo/breeds/chow/n02112137_10762.jpg',
         'https://images.dog.ceo/breeds/hound-basset/n02088238_3359.jpg',
+        'https://images.dog.ceo/breeds/weimaraner/n02092339_3171.jpg',
+        'https://images.dog.ceo/breeds/retriever-flatcoated/n02099267_5427.jpg',
+        'https://images.dog.ceo/breeds/terrier-cairn/n02096177_1710.jpg',
+        'https://images.dog.ceo/breeds/terrier-toy/n02087046_357.jpg',
+        'https://images.dog.ceo/breeds/retriever-golden/n02099601_2796.jpg',
+        'https://images.dog.ceo/breeds/redbone/n02090379_2771.jpg',
+        'https://images.dog.ceo/breeds/retriever-flatcoated/n02099267_482.jpg',
+        'https://images.dog.ceo/breeds/bulldog-boston/n02096585_1562.jpg',
+        'https://images.dog.ceo/breeds/poodle-toy/n02113624_530.jpg',
+        'https://images.dog.ceo/breeds/bulldog-english/mami.jpg',
+        'https://images.dog.ceo/breeds/maltese/n02085936_7142.jpg',
+        'https://images.dog.ceo/breeds/airedale/n02096051_7847.jpg',
     ];
 
     return (
