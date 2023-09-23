@@ -203,7 +203,7 @@ export const Auth = () => {
                         return <Col key={image} flex={1}>
                             <Image
                                 preview={false}
-                                style={{ width: '13vw', height: '13vw', objectFit: 'cover', opacity: 0.75 }}
+                                style={{ width: '13vw', height: '13vw', borderRadius: '10%', objectFit: 'cover', opacity: 0.75 }}
                                 src={image}
                             />
                         </Col>
