@@ -4,9 +4,10 @@ import { BarCodeScanner } from 'expo-barcode-scanner';
 import { theme } from './theme';
 import { WhiteSpace } from '@ant-design/react-native';
 import { useNavigation } from '@react-navigation/native';
-import { COLLAR_VIEW } from './navigation/constants';
+import { COLLAR_VIEW, CREATE_COLLAR_VIEW, UPDATE_COLLAR_VIEW } from './navigation/constants';
 
-export const ScanQrView = () => {
+export const ScanQrView = ({ route }) => {
+    const navigateTo = route.params && route.params.navigateTo;
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
     const navigation = useNavigation();
@@ -21,7 +22,7 @@ export const ScanQrView = () => {
     const handleBarCodeScanned = ({ type, data }) => {
         const qrCodeId = data.substring(data.lastIndexOf('/') + 1);
         setScanned(true);
-        navigation.navigate(COLLAR_VIEW, { qrCodeId });
+        navigation.navigate(navigateTo, { qrCodeId });
     };
 
     const renderCamera = () => {
@@ -51,7 +52,15 @@ export const ScanQrView = () => {
         <View style={theme.container}>
             <WhiteSpace size={'lg'} />
             <Text style={theme.title}>Welcome!</Text>
-            <Text style={theme.paragraph}>Scan a barcode to find the pet info.</Text>
+            {navigateTo === UPDATE_COLLAR_VIEW && (
+                <Text style={theme.paragraph}>Scan a barcode to update the pet info.</Text>
+            )}
+            {navigateTo === CREATE_COLLAR_VIEW && (
+                <Text style={theme.paragraph}>Scan a barcode to create the pet info.</Text>
+            )}
+            {navigateTo === COLLAR_VIEW && (
+                <Text style={theme.paragraph}>Scan a barcode to find the pet info.</Text>
+            )}
             <WhiteSpace size={'lg'} />
             {renderCamera()}
         </View>

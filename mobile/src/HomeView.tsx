@@ -1,7 +1,12 @@
 import { View, Text, Button, Pressable, StyleSheet } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { CREATE_COLLAR_VIEW, SCAN_QR_VIEW, UPDATE_COLLAR_VIEW } from './navigation/constants';
+import {
+    COLLAR_VIEW,
+    CREATE_COLLAR_VIEW,
+    SCAN_QR_VIEW,
+    UPDATE_COLLAR_VIEW,
+} from './navigation/constants';
 import { theme } from './theme';
 
 const HomeView = () => {
@@ -9,12 +14,12 @@ const HomeView = () => {
     const handleButtonPress = (view) => {
         if (!view) return;
 
-        navigation.navigate(view);
+        navigation.navigate(SCAN_QR_VIEW, { navigateTo: view });
     };
     return (
         <View style={theme.container}>
             <View style={styles.buttonContainer}>
-                <Pressable onPress={() => handleButtonPress(SCAN_QR_VIEW)} style={styles.button}>
+                <Pressable onPress={() => handleButtonPress(COLLAR_VIEW)} style={styles.button}>
                     <Text style={styles.text}>Scan QR Collar</Text>
                 </Pressable>
                 <Pressable
