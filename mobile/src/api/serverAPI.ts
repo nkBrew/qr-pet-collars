@@ -40,3 +40,15 @@ export const updateCollar = (qrCodeId, collar) => {
             console.log(error);
         });
 };
+
+export const listAll = () => {
+    return api
+        .get(`/collar/`)
+        .then((response) => {
+            console.log(response.data);
+            return response.data;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};

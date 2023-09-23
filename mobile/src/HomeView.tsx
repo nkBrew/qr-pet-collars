@@ -1,7 +1,12 @@
 import { View, Text, Button, Pressable, StyleSheet } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { CREATE_COLLAR_VIEW, SCAN_QR_VIEW, UPDATE_COLLAR_VIEW } from './navigation/constants';
+import {
+    CREATE_COLLAR_VIEW,
+    LIST_ALL_VIEW,
+    SCAN_QR_VIEW,
+    UPDATE_COLLAR_VIEW,
+} from './navigation/constants';
 import { theme } from './theme';
 
 const HomeView = () => {
@@ -29,6 +34,9 @@ const HomeView = () => {
                 >
                     <Text style={styles.text}>Create</Text>
                 </Pressable>
+                <Pressable onPress={() => handleButtonPress(LIST_ALL_VIEW)} style={styles.button}>
+                    <Text style={styles.text}>ListAll</Text>
+                </Pressable>
             </View>
         </View>
     );
@@ -42,7 +50,7 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: '#6A8BC4',
-        height: '20%',
+        height: '17%',
         margin: 10,
         borderRadius: 5,
         justifyContent: 'center',
