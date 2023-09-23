@@ -4,7 +4,7 @@ import { Button, Card, Col, Form, Input, Row, Typography  } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from './routes';
 
-import { CreateCollarPage } from './CreateCollar/CreateCollarPage';
+import { CreateCollarPage } from './collar/CreateCollarPage';
 
 const API_HOST = 'http://localhost:8000';
 
