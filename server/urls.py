@@ -12,6 +12,7 @@ urlpatterns = [
     path('session/', views.session_view, name='api-session'),
     path('whoami/', views.whoami_view, name='api-whoami'),
 
-    path('makeqr/<int:pk>/', views.make_qr_code, name='make-qr'),
+    path('makeqr/<int:id>/', views.make_qr_code, name='make-qr'),
+    path('collar/<int:id>/', views.CollarView.as_view(), name='collar-view-detail'),
     path('collar/', views.CollarView.as_view(), name='collar-view')
 ]

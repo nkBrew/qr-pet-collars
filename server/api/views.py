@@ -5,6 +5,7 @@ import json
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse, HttpResponse
 from django.middleware.csrf import get_token
+from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_POST
 import qrcode
@@ -17,9 +18,9 @@ from .models import Collar
 from .serializers.collar_serializer import CollarSerializer
 
 
-def make_qr_code(request, pk):
+def make_qr_code(request, id):
     buffer = io.BytesIO()
-    img = qrcode.make(f"http://localhost:3000/{pk}")
+    img = qrcode.make(f"http://localhost:3000/{id}")
     img.save(buffer)
     code = base64.b64encode(buffer.getvalue()).decode()
 
@@ -70,6 +71,12 @@ def whoami_view(request):
 
 
 class CollarView(APIView):
+    def get(self, request, id):
+        instance = get_object_or_404(Collar, id=id)
+        serializer = CollarSerializer(instance=instance)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
     def post(self, request):
         serializer = CollarSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
