@@ -39,7 +39,7 @@ export const ViewCollarsPage = () => {
                         <Col>
                             <NotFound
                                 img={'https://images.dog.ceo/breeds/dachshund/Dash_Dachshund_With_Hat.jpg'}
-                                description={'Looks like you don\'t have any collars yet. Let\'s change that!'}
+                                description={'Looks like you don\'t have any collars. Let\'s change that!'}
                                 buttonText={'Create New Collar'}
                                 buttonAction={() => navigate(ROUTES.createCollar)}
                             />
