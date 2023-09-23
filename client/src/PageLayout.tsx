@@ -1,9 +1,11 @@
 import { Card, Col, Menu, Row } from 'antd';
-import { generatePath, useLocation, useNavigate } from 'react-router';
+import { generatePath, matchPath, useLocation, useNavigate } from 'react-router';
+import { find, values } from 'lodash';
+import { PlusOutlined, ScheduleOutlined } from '@ant-design/icons';
+
+import { ROUTES } from './routes';
 
 import type { ReactNode } from 'react';
-import { ROUTES } from './routes';
-import { EditOutlined, PlusCircleOutlined, ScheduleOutlined } from '@ant-design/icons';
 
 type Props = {
     children: ReactNode,
@@ -16,25 +18,21 @@ export const PageLayout = (props: Props) => {
     const navigate = useNavigate();
     const location = useLocation();
 
+    const selectedPath = find(values(ROUTES), (route: string) => matchPath(route, location.pathname));
+
     return (
         <Row gutter={[0, 24]}>
             <Col span={24}>
                 <Card>
                     <Menu
-                        selectedKeys={[location.pathname]}
+                        selectedKeys={[`${selectedPath}`]}
                         mode={'horizontal'}
                         items={[
                             {
                                 key: ROUTES.createCollar,
                                 label: 'Create Collar',
-                                icon: <PlusCircleOutlined/>,
-                                onClick: () => navigate(generatePath(ROUTES.createCollar, { collarId: '1' })),
-                            },
-                            {
-                                key: ROUTES.updateCollar,
-                                label: 'Edit Collar',
-                                icon: <EditOutlined/>,
-                                onClick: () => navigate(generatePath(ROUTES.updateCollar, { collarId: '1' })),
+                                icon: <PlusOutlined/>,
+                                onClick: () => navigate(generatePath(ROUTES.createCollar)),
                             },
                             {
                                 key: ROUTES.viewCollar,

@@ -1,10 +1,14 @@
 import React from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router';
+import { generatePath, useNavigate, useParams } from 'react-router';
 import { useQuery } from 'react-query';
-import { Card, Col, Divider, Image, Row, Typography } from 'antd';
+import { Button, Card, Col, Divider, Image, Row, Typography } from 'antd';
+import { EditOutlined } from '@ant-design/icons';
+
+import { ROUTES } from '../routes';
 
 export const ViewCollarPage = () => {
+    const navigate = useNavigate();
     const params = useParams();
 
     const collarId = Number(params.collarId);
@@ -26,14 +30,27 @@ export const ViewCollarPage = () => {
 
     return (
         <Row justify={'center'}>
-            <Col flex={'480px'}>
+            <Col flex={'48rem'}>
                 <Card
                     loading={isLoadingCollar}
                     cover={
-                        <Image
-                            preview={false}
-                            src={'https://images.dog.ceo/breeds/germanshepherd/Bagira_site.jpg'}
-                        />
+                        <Row>
+                            <Col style={{ position: 'absolute', top: 0, right: 0, zIndex: 100 }}>
+                                <EditOutlined
+                                    style={{ fontSize: '2rem', backgroundColor: '#FFFFFF80', borderRadius: '50%', padding: '1.6rem', margin: '0.8rem' }}
+                                    onClick={() => navigate(generatePath(
+                                        ROUTES.updateCollar,
+                                        { collarId: params.collarId },
+                                    ))}
+                                />
+                            </Col>
+                            <Col>
+                                <Image
+                                    preview={false}
+                                    src={'https://images.dog.ceo/breeds/germanshepherd/Bagira_site.jpg'}
+                                />
+                            </Col>
+                        </Row>
                     }
                 >
                     {
@@ -61,7 +78,7 @@ export const ViewCollarPage = () => {
                             </Col>
                             <Col span={24} style={{ textAlign: 'center' }}>
                                 <Typography.Text style={{ fontSize: '1.6rem' }}>
-                                    {Number(collar.weight)}kg
+                                    Weight: {Number(collar.weight)}kg
                                 </Typography.Text>
                             </Col>
                             <Col span={24}>
@@ -69,17 +86,17 @@ export const ViewCollarPage = () => {
                             </Col>
                             <Col span={24} style={{ textAlign: 'center' }}>
                                 <Typography.Text style={{ fontSize: '1.6rem' }}>
-                                    {collar.owner_name}
+                                    Owner: {collar.owner_name}
                                 </Typography.Text>
                             </Col>
                             <Col span={24} style={{ textAlign: 'center' }}>
                                 <Typography.Text style={{ fontSize: '1.6rem' }}>
-                                    {collar.owner_email}
+                                    Email: {collar.owner_email}
                                 </Typography.Text>
                             </Col>
                             <Col span={24} style={{ textAlign: 'center' }}>
                                 <Typography.Text style={{ fontSize: '1.6rem' }}>
-                                    {collar.phone_number}
+                                    Phone: {collar.phone_number}
                                 </Typography.Text>
                             </Col>
                         </Row>

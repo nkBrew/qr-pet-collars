@@ -11,9 +11,9 @@ import { ROUTES } from './routes';
 
 import Auth from './Auth';
 import { PageLayout } from './PageLayout';
-import { UpdateCollarPage } from './UpdateCollarPage';
-import { ViewCollarPage } from './ViewCollar/ViewCollarPage';
-import { CreateCollarPage } from './CreateCollar/CreateCollarPage';
+import { UpdateCollarPage } from './collar/UpdateCollarPage';
+import { ViewCollarPage } from './collar/ViewCollarPage';
+import { CreateCollarPage } from './collar/CreateCollarPage';
 
 const queryClient = new QueryClient();
 
