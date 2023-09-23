@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import { useQueryClient } from 'react-query';
 import { Form, message } from 'antd';
 
 import { ROUTES } from '../routes';
@@ -9,6 +10,7 @@ import { CollarCard } from './CollarCard';
 import { CollarForm } from './CollarForm';
 
 export const CreateCollarPage = () => {
+    const queryClient = useQueryClient();
     const navigate = useNavigate();
     const [form] = Form.useForm();
     const img = Form.useWatch('img_url', form);
@@ -23,6 +25,7 @@ export const CreateCollarPage = () => {
                 form={form}
                 showQRCode={true}
                 showIsMissing={false}
+                showDelete={false}
                 onFinish={(values) => {
                     axios.post(`${API_HOST}/collar/`, {
                         img_url: values.img_url,
@@ -35,11 +38,9 @@ export const CreateCollarPage = () => {
                         qr_code_id: values.qr_code_id,
                         is_missing: values.is_missing,
                     }).then(() => {
-                        messageApi.open({
-                            type: 'success',
-                            content: 'We created your mutt',
+                        queryClient.invalidateQueries({ queryKey: ['collars'] }).then(() => {
+                            navigate(ROUTES.viewCollars);
                         });
-                        navigate(ROUTES.viewCollars);
                     }).catch((error) => {
                         messageApi.open({
                           type: 'error',
