@@ -3,13 +3,14 @@ export const theme = {
         flex: 1,
         height: '100%',
         backgroundColor: '#222831',
+        alignItems: 'center',
     },
     title: {
         fontSize: 36,
         fontWeight: 500,
         color: 'white',
     },
-    description: {
+    paragraph: {
         fontSize: 18,
         color: 'white',
     },

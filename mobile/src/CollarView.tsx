@@ -32,11 +32,11 @@ export const CollarView = () => {
                 />
                 <WhiteSpace />
                 <Text style={theme.title}>{collarData.pet_name}</Text>
-                <Text style={theme.description}>{collarData.breed}</Text>
-                <Text style={theme.description}>{collarData.weight}</Text>
-                <Text style={theme.description}>Owner: {collarData.owner_name}</Text>
-                <Text style={theme.description}>{collarData.owner_email}</Text>
-                <Text style={theme.description}>{collarData.owner_address}</Text>
+                <Text style={theme.paragraph}>{collarData.breed}</Text>
+                <Text style={theme.paragraph}>{collarData.weight}</Text>
+                <Text style={theme.paragraph}>Owner: {collarData.owner_name}</Text>
+                <Text style={theme.paragraph}>{collarData.owner_email}</Text>
+                <Text style={theme.paragraph}>{collarData.owner_address}</Text>
             </Flex>
         </View>
     );
