@@ -10,7 +10,6 @@ import {
 } from './src/navigation/constants';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { CollarView } from './src/CollarView';
-import axios from 'axios';
 import { ScanQrView } from './src/ScanQrView';
 import HomeView from './src/HomeView';
 import { UpdateCollarView } from './src/UpdateCollarView';
@@ -20,7 +19,6 @@ const Stack = createNativeStackNavigator();
 const queryClient = new QueryClient();
 
 export default function App() {
-    axios.defaults.baseURL = 'http://192.168.1.71:8000';
     return (
         <QueryClientProvider client={queryClient}>
             <NavigationContainer>
