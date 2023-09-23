@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { generatePath, useNavigate, useParams } from 'react-router';
-import { useQuery } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 import { Form, message } from 'antd';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 
@@ -13,6 +13,7 @@ import { CollarForm } from './CollarForm';
 const API_HOST = 'http://localhost:8000';
 
 export const UpdateCollarPage = () => {
+    const queryClient = useQueryClient();
     const [form] = Form.useForm();
     const navigate = useNavigate();
     const params = useParams();
@@ -67,6 +68,7 @@ export const UpdateCollarPage = () => {
                 form={form}
                 showQRCode={false}
                 showIsMissing={true}
+                showDelete={true}
                 initialValues={collar && {
                     img_url: collar.img_url,
                     pet_name: collar.pet_name,
@@ -88,10 +90,11 @@ export const UpdateCollarPage = () => {
                         phone_number: values.phone_number,
                         qr_code_id: collarId,
                         is_missing: values.is_missing,
-                    }).then(() => messageApi.open({
-                          type: 'success',
-                          content: 'We updated your mutt',
-                    })).catch((error) => {
+                    }).then(() => {
+                        queryClient.invalidateQueries().then(() => {
+                            navigate(ROUTES.viewCollars);
+                        });
+                    }).catch((error) => {
                         messageApi.open({
                           type: 'error',
                           content: `Well the important thing is we tried... ${error.message}`,
