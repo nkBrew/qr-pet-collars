@@ -73,5 +73,5 @@ class CollarView(APIView):
     def post(self, request):
         serializer = CollarSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        data = serializer.save()
-        return Response(data=data, status=status.HTTP_201_CREATED)
+        serializer.save()
+        return Response(data=serializer.data, status=status.HTTP_201_CREATED)
