@@ -20,7 +20,7 @@ from .serializers.collar_serializer import CollarSerializer
 
 def make_qr_code(request, id):
     buffer = io.BytesIO()
-    img = qrcode.make(f"http://localhost:3000/{id}")
+    img = qrcode.make(f"http://localhost:3000/collars/{id}")
     img.save(buffer)
     code = base64.b64encode(buffer.getvalue()).decode()
 
