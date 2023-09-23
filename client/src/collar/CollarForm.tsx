@@ -39,7 +39,7 @@ export const CollarForm = (props: Props) => {
         <Form
             form={form}
             layout={'horizontal'}
-            labelCol={{ span: 6 }}
+            labelCol={{ span: 7 }}
             onFinish={onFinish}
             initialValues={initialValues}
         >
