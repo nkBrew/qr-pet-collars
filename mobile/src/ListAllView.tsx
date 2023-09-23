@@ -9,24 +9,17 @@ import { COLLAR_VIEW } from './navigation/constants';
 
 const ListAllView = () => {
     const navigation = useNavigation();
-
-    const { data: photos, error: pError } = useQuery({
-        queryKey: ['allCollarsPhotos'],
-        queryFn: dogPhotos,
-    });
-
     const { data: collars } = useQuery({
         queryKey: ['allCollars'],
         queryFn: listAll,
     });
 
     const handleCollarPress = (qrCodeId) => {
-        // const qrCodeId = data.substring(data.lastIndexOf('/') + 1);
         navigation.navigate(COLLAR_VIEW, { qrCodeId });
     };
 
     const renderCollars = () => {
-        if (!collars || !photos) return [];
+        if (!collars) return [];
         console.log('here' + collars);
 
         return collars.map((collar, i) => (
@@ -34,7 +27,7 @@ const ListAllView = () => {
                 <Pressable onPress={() => handleCollarPress(collar.qr_code_id)}>
                     <Image
                         style={{ width: 150, height: 150, borderRadius: 100, marginTop: 48 }}
-                        source={{ uri: photos[i] }}
+                        source={{ uri: collar.img_url }}
                     />
                     <Text style={styles.collarName}>{collar.pet_name}</Text>
                 </Pressable>
@@ -47,7 +40,7 @@ const ListAllView = () => {
         <SafeAreaView style={theme.container}>
             <ScrollView style={styles.container}>
                 <Text style={{ color: 'white', fontSize: 20, alignSelf: 'center', width: '70%' }}>
-                    Here are pets that need to be found
+                    Here are all your Collars
                 </Text>
                 {renderCollars()}
             </ScrollView>

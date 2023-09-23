@@ -15,6 +15,10 @@ const HomeView = () => {
     const handleButtonPress = (view) => {
         if (!view) return;
 
+        if (view === LIST_ALL_VIEW) {
+            navigation.navigate(view);
+            return;
+        }
         navigation.navigate(SCAN_QR_VIEW, { navigateTo: view });
     };
     return (
@@ -51,8 +55,8 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: '#6A8BC4',
-        height: '17%',
-        margin: 10,
+        height: '12%',
+        margin: 7,
         borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
