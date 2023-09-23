@@ -1,7 +1,7 @@
 import React from "react";
-
-import { Button, Card, Col, Image, Row, Space, Typography  } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { Button, Card, Col, Image, Row, Typography  } from 'antd';
+
 import { ROUTES } from './routes';
 
 const API_HOST = 'http://localhost:8000';
@@ -150,113 +150,102 @@ export const Auth = () => {
 
     ];
 
-
-    if (!isAuthenticated) {
-        return (
-            <Row style={{height: 'calc(100vh - 16px)', overflow: 'hidden'}}>
-                <Col span={24}>
-                    <Row gutter={[8, 8]} style={{position:'absolute'}}>
-                        {images.map(image => {
-                            return <Col flex={1}>
-                                <Image
-                                    preview={false}
-                                    style={{ width: '12vw', height: '12vw', objectFit: 'cover' }}
-                                    src={image}
-                                />
-                            </Col>
-                        })}
-                    </Row>
-                    
-                    <Row align={'middle'} justify={'center'} style={{ height: '90vh' }}>
-                        <Col>
-                            <Card>
-                                <Typography.Title level={2}>who let the dogs out?</Typography.Title>
-                                <br/>
-                                <Row justify='center' gutter={5}>
-                                    <Col>
-                                        <Image
-                                            preview={false}
-                                            style={{ width: '16rem', height: '16rem', borderRadius: '13%', objectFit: 'cover' }}
-                                            src={'https://images.dog.ceo/breeds/retriever-chesapeake/n02099849_1408.jpg'}
-                                            //https://images.dog.ceo/breeds/newfoundland/n02111277_6679.jpg
-                                        />
-                                    </Col>
-                                </Row>
-                                <br/>
-                                <form onSubmit={login}>
+    return (
+        <Row style={{height: 'calc(100vh - 16px)', overflow: 'hidden'}}>
+            <Col span={24}>
+                <Row gutter={[8, 8]} style={{position:'absolute'}}>
+                    {images.map(image => {
+                        return <Col key={image} flex={1}>
+                            <Image
+                                preview={false}
+                                style={{ width: '13vw', height: '13vw', objectFit: 'cover' }}
+                                src={image}
+                            />
+                        </Col>
+                    })}
+                </Row>
+                <Row align={'middle'} justify={'center'} style={{ height: '90vh' }}>
+                    <Col>
+                        {
+                            isAuthenticated
+                                ? <Card>
                                     <Row justify='center' gutter={5}>
                                         <Col>
-                                            <Typography.Text>Username: </Typography.Text>
-                                            <br/>
-                                            <Typography.Text>Password: </Typography.Text>
-                                        </Col>
-                                        <Col>
-                                            <input type="text" className="form-control" id="username" name="username"
-                                                value={username} onChange={(event) => setUsername(event.target.value)}/>
-                                            <br/>
-                                            <input type="password" className="form-control" id="password" name="password"
-                                                value={password} onChange={(event) => setPassword(event.target.value)}/>
-                                        </Col>
-                                    </Row>
-                                    <Row justify='center'>
-                                        <Col>
-                                            {error &&
-                                                <Typography.Text type={'danger'}>
-                                                    {error}
-                                                </Typography.Text>
-                                            }
-                                            {!error &&
-                                                <br/>
-                                            }
+                                            <Image
+                                                preview={false}
+                                                style={{ width: '16rem', height: '16rem', borderRadius: '50%', objectFit: 'cover' }}
+                                                src={'https://images.dog.ceo/breeds/greyhound-italian/n02091032_658.jpg'}
+
+                                            />
                                         </Col>
                                     </Row>
                                     <br/>
-                                    <Row justify='center'>
+                                    <Typography.Text>are you sure you want to log out?</Typography.Text>
+                                    <br/>
+                                    <br/>
+                                    <Row justify='center' gutter={20}>
                                         <Col>
-                                            <Button htmlType="submit">Login</Button>
+                                            <Button type='primary' onClick={logout}>Yes</Button>
+                                        </Col>
+                                        <Col>
+                                            <Button onClick={viewCollars}>No</Button>
                                         </Col>
                                     </Row>
-                                </form>
-                            </Card>
-                        </Col>
-                    </Row>
-                </Col>
-            </Row>
-        );
-    }
-    else if (isAuthenticated) {
-        return (
-            <Row align={'middle'} justify={'center'} style={{ height: '90vh' }}>
-                <Col>
-                    <Card>
-                        <Row justify='center' gutter={5}>
-                            <Col>
-                                <Image
-                                    preview={false}
-                                    style={{ width: '16rem', height: '16rem', borderRadius: '50%', objectFit: 'cover' }}
-                                    src={'https://images.dog.ceo/breeds/greyhound-italian/n02091032_658.jpg'}
-                                    //https://images.dog.ceo/breeds/retriever-chesapeake/n02099849_1408.jpg
-
-                                />
-                            </Col>
-                        </Row>
-                        <br/>
-                        <Typography.Text>are you sure you want to log out?</Typography.Text>
-                        <br/>
-                        <br/>
-                        <Row justify='center' gutter={20}>
-                            <Col>
-                                <Button type='primary' onClick={logout}>Yes</Button>
-                            </Col>
-                            <Col>
-                                <Button onClick={viewCollars}>No</Button>
-                            </Col>
-                        </Row>
-                    </Card>
-                </Col>
-            </Row>
-        )
-    }
+                                </Card>
+                                : <Card>
+                                    <Typography.Title level={2}>who let the dogs out?</Typography.Title>
+                                    <br/>
+                                    <Row justify='center' gutter={5}>
+                                        <Col>
+                                            <Image
+                                                preview={false}
+                                                style={{ width: '16rem', height: '16rem', borderRadius: '13%', objectFit: 'cover' }}
+                                                src={'https://images.dog.ceo/breeds/retriever-chesapeake/n02099849_1408.jpg'}
+                                            />
+                                        </Col>
+                                    </Row>
+                                    <br/>
+                                    <form onSubmit={login}>
+                                        <Row justify='center' gutter={5}>
+                                            <Col>
+                                                <Typography.Text>Username: </Typography.Text>
+                                                <br/>
+                                                <Typography.Text>Password: </Typography.Text>
+                                            </Col>
+                                            <Col>
+                                                <input type="text" className="form-control" id="username" name="username"
+                                                    value={username} onChange={(event) => setUsername(event.target.value)}/>
+                                                <br/>
+                                                <input type="password" className="form-control" id="password" name="password"
+                                                    value={password} onChange={(event) => setPassword(event.target.value)}/>
+                                            </Col>
+                                        </Row>
+                                        <Row justify='center'>
+                                            <Col>
+                                                {error &&
+                                                    <Typography.Text type={'danger'}>
+                                                        {error}
+                                                    </Typography.Text>
+                                                }
+                                                {!error &&
+                                                    <br/>
+                                                }
+                                            </Col>
+                                        </Row>
+                                        <br/>
+                                        <Row justify='center'>
+                                            <Col>
+                                                <Button type={'primary'} htmlType="submit">Login</Button>
+                                            </Col>
+                                        </Row>
+                                    </form>
+                                </Card>
+                        }
+                    </Col>
+                </Row>
+            </Col>
+        </Row>
+    );
 }
 
 export default Auth;
