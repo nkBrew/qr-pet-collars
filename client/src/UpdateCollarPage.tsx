@@ -20,7 +20,7 @@ export const UpdateCollarPage = () => {
         queryFn: () => axios({
             method: 'get',
             url: `${API_HOST}/collar/${collarId}/`,
-        }),
+        }).then((response) => response.data),
         enabled: true,
         retry: false,
         refetchOnWindowFocus: false,
@@ -51,7 +51,6 @@ export const UpdateCollarPage = () => {
         );
     }
 
-    console.log(collar.data);
     return (
         <Row justify={'center'}>
             <Col flex={'480px'}>
@@ -71,12 +70,12 @@ export const UpdateCollarPage = () => {
                                 layout={'horizontal'}
                                 labelCol={{ span: 4 }}
                                 initialValues={{
-                                    pet_name: collar.data.pet_name,
-                                    breed: collar.data.breed,
-                                    weight: collar.data.weight,
-                                    owner_name: collar.data.owner_name,
-                                    owner_email: collar.data.owner_email,
-                                    phone_number: collar.data.phone_number,
+                                    pet_name: collar.pet_name,
+                                    breed: collar.breed,
+                                    weight: collar.weight,
+                                    owner_name: collar.owner_name,
+                                    owner_email: collar.owner_email,
+                                    phone_number: collar.phone_number,
                                 }}
                                 onFinish={(values) => {
                                     axios.put(`${API_HOST}/collar/${collarId}/`, {
@@ -94,7 +93,7 @@ export const UpdateCollarPage = () => {
                                         messageApi.open({
                                           type: 'error',
                                           content: `Well the important thing is we tried... ${error.message}`,
-                                    })
+                                        })
                                     })
                                 }}
                             >
